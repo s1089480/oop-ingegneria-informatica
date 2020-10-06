@@ -11,10 +11,10 @@ import java.net.MalformedURLException;
 
 
 
-public class Data_base 
-{
+public class Data_base  {
 
-	public static void Scaricadati() throws Exception 
+
+	public static void Scaricadati() throws IOException
 	{
 		int a=0;
 		int b=0;
@@ -67,28 +67,27 @@ Fsvezia.close();
  * file contenente contagiati,ricoveri,morti negli stati univi nel mese di marzo
  */
 
-File StatiUniti = new File("StatiUniti.json");
-FileOutputStream Fstatiuniti=new FileOutputStream(StatiUniti);
+File Italia = new File("Italia.json");
+FileOutputStream Fitalia=new FileOutputStream(Italia);
 
 
 
 
-URL statiunitiURL = new URL("https://api.covid19api.com/country/US?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z");
-URLConnection URLConnst= statiunitiURL.openConnection();
-InputStream input3=URLConnst.getInputStream();
+URL italiaURL = new URL("https://api.covid19api.com/country/italy?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z");
+URLConnection URLConnit= italiaURL.openConnection();
+InputStream input3=URLConnit.getInputStream();
 
 while((c=input3.read())!=-1)
 {
-Fstatiuniti.write(c);
+Fitalia.write(c);
 
 }
 input3.close();
-Fstatiuniti.close();
+Fitalia.close();
 	
 }
-	
-	
-	}
 
+}
+	
 
 	
