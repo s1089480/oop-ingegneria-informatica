@@ -10,5 +10,4 @@ import modello.Dati;
 @RestController
 public class SimpleController {
 
-	
 }
