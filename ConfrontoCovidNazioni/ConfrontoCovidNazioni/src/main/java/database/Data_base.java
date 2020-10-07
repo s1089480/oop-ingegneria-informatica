@@ -79,6 +79,7 @@ public class Data_base  {
 	FileOutputStream Fsvezia=new FileOutputStream(svezia);
 	
 	
+	
 URL sveziaURL = new URL("https://api.covid19api.com/country/sweden?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z");
 URLConnection URLConnsv= sveziaURL.openConnection();
 InputStream input2=URLConnsv.getInputStream();
@@ -110,7 +111,6 @@ Fsvezia.close();
 
 File Italia = new File("Italia.json");
 FileOutputStream Fitalia=new FileOutputStream(Italia);
-
 
 
 
