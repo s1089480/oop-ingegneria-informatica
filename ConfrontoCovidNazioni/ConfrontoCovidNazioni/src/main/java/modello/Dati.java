@@ -9,6 +9,7 @@ import java.util.Date;
  *
  */
 
+
 public class Dati {
 
 	    protected Date datainizio;
