@@ -11,31 +11,52 @@ import java.util.Date;
 
 
 public class Dati {
-
+        protected String NomNaz;
+        protected Date CurrentData;
 	    protected Date datainizio;
 	    protected Date datafine;
-		protected Integer casi;
-		protected Integer guarigioni;
-		protected Integer decessi;
+		protected Integer NumCas;
+		protected Integer NumGuar;
+		protected Integer NumMort;
 		
-		public Dati(Integer casi, Integer guarigioni, Integer decessi, Date datainizio, Date datafine) {
+		public Dati(Integer NumCas, Integer NumGuar, Integer NumMort, Date datainizio, Date datafine, String NomNaz, Date CurrentData) {
 			super();
+			this.NomNaz=NomNaz;
+			this.CurrentData=CurrentData;
 			this.datainizio= datainizio;
 			this.datafine= datafine;
-			this.casi = casi;
-			this.guarigioni = guarigioni;
-			this.decessi = decessi;
+			this.NumCas = NumCas;
+			this.NumGuar = NumGuar;
+			this.NumMort = NumMort;
 		}
 		
 		public Dati() {
-			this.casi=null;
-			this.guarigioni=null;
-			this.decessi=null;
+			
+			this.NomNaz=null;
+			this.CurrentData=null;
+			this.NumCas=0;
+			this.NumGuar=0;
+			this.NumMort=0;
 			this.datainizio=null;
 			this.datafine=null;
 		}
 
+		public String getNomNaz() {
+			return NomNaz;
+		}
+
+		public void setNomNaz(String nomNaz) {
+			NomNaz = nomNaz;
+		}
 		
+		 public Date getCurrentData() {
+				return CurrentData;
+			}
+		
+		public void setCurrentData(Date currentData) {
+			CurrentData = currentData;
+		}
+
 		public Date getDatainizio() {
 			return datainizio;
 		}
@@ -52,31 +73,32 @@ public class Dati {
 			this.datafine = datafine;
 		}
 
+		public Integer getNumCas() {
+			return NumCas;
+		}
+
+		public void setNumCas(Integer numCas) {
+			NumCas = numCas;
+		}
+
+		public Integer getNumGuar() {
+			return NumGuar;
+		}
+
+		public void setNumGuar(Integer numGuar) {
+			NumGuar = numGuar;
+		}
+
+		public Integer getNumMort() {
+			return NumMort;
+		}
+
+		public void setNumMort(Integer numMort) {
+			NumMort = numMort;
+		}
+
 		
-		public Integer getCasi() {
-			return casi;
-		}
-
-		public void setCasi(Integer casi) {
-			this.casi = casi;
-		}
-
-		public Integer getGuarigioni() {
-			return guarigioni;
-		}
-
-		public void setGuarigioni(Integer guarigioni) {
-			this.guarigioni = guarigioni;
-		}
-
-		public Integer getDecessi() {
-			return decessi;
-		}
-		
-		 void setDecessi(Integer decessi) {
-			this.decessi = decessi;
-		}
-		
+	
 		
 		
 }

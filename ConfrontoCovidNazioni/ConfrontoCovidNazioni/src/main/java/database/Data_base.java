@@ -10,10 +10,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URLConnection;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+
+import modello.Metadati;
 
 import java.net.URL;
 import java.net.MalformedURLException;
@@ -22,6 +25,7 @@ import java.net.MalformedURLException;
 
 public class Data_base  {
 
+	private static ArrayList<Metadati> metadati = new ArrayList<Metadati>();
 	static String s="";
 	static String p="";
 	static String q="";
@@ -139,6 +143,23 @@ input3.close();
 Fitalia.close();
 	
 }
+	
+public static ArrayList<Metadati> getArrayMetadati() {
+		
+		metadati.add(new Metadati("NomNaz","Nome nazione","String"));
+		metadati.add(new Metadati("CodPaes","Codice di nazione","String"));
+		metadati.add(new Metadati("Prov","Provincia","String"));
+		metadati.add(new Metadati("NomCit","Nome Città","String"));
+		metadati.add(new Metadati("CodCit","Codice della città","String"));
+		metadati.add(new Metadati("Lat","Latitudine","Double"));
+		metadati.add(new Metadati("Long","Longitudine","Double"));
+		metadati.add(new Metadati("NumCas","Totale numero casi infetti","Integer"));
+		metadati.add(new Metadati("NumMort","Totale numero deceduti","Integer"));
+		metadati.add(new Metadati("NumRicov","Totale numero ricoverati","Integer"));
+		metadati.add(new Metadati("NumIsol","Totale numero casi isolati","Integer"));
+		metadati.add(new Metadati("CurrentData","data corrente","data"));
+		return metadati;
+	}	
 
 	
 	
