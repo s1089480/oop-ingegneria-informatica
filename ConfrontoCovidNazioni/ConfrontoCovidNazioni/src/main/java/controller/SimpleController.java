@@ -11,11 +11,4 @@ import modello.Dati;
 public class SimpleController {
 
 	
-		@GetMapping("/hello")
-		public Dati ottienidati(@RequestParam(datainizio="datainizio",datafine="world",defaultvalue="boh") String file) {
-			
-			return new Dati("adriano","mancini");
-		
-	
-}
 }
