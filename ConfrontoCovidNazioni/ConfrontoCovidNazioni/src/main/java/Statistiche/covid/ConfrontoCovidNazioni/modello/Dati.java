@@ -1,7 +1,7 @@
 package Statistiche.covid.ConfrontoCovidNazioni.modello;
 
 
-import java.util.Date;
+
 
 /**
  * 
@@ -17,37 +17,34 @@ public class Dati {
         protected String Prov;
         protected String NomCit;
         protected String CodCit;
-        protected long Lat;
-        protected long lon;
+        protected String Lat;
+        protected String lon;
         
-        protected Integer NumCas;
-		protected Integer NumMort;
-		protected Integer NumRicov;
-		protected Integer NumIsol;
-		protected Date CurrentData;
-	    protected Date datainizio;
-		protected Date datafine;
+        protected Long NumCas;
+		protected Long NumMort;
+		protected Long NumRicov;
+		protected Long NumIsol;
+		protected String CurrentData;
+	    
 		
 	    
 
-		public Dati(String nomNaz, String codPaes, String prov, String nomCit, String codCit, long lat, long lon,
-				Integer numCas, Integer numMort, Integer numRicov, Integer numIsol, Date currentData, Date datainizio,
-				Date datafine) {
+		public Dati(String nomNaz, String codPaes, String prov, String nomCit, String codCit, String lat, String lon,
+				Long numCas, Long numMort, Long numRicov, Long numIsol, String currentData) {
 			super();
 			NomNaz = nomNaz;
 			CodPaes = codPaes;
 			Prov = prov;
 			NomCit = nomCit;
 			CodCit = codCit;
-			Lat = lat;
+			this.Lat = lat;
 			this.lon = lon;
 			NumCas = numCas;
 			NumMort = numMort;
 			NumRicov = numRicov;
 			NumIsol = numIsol;
 			CurrentData = currentData;
-			this.datainizio = datainizio;
-			this.datafine = datafine;
+			
 		}
 
 		public Dati() {
@@ -56,15 +53,14 @@ public class Dati {
 			this.Prov = null;
 			this.NomCit = null;
 			this.CodCit = null;
-			this.Lat = 0;
-			this.lon = 0;
+			this.Lat = null;
+			this.lon = null;
 			this.NumCas = null;
 			this.NumMort = null;
 			this.NumRicov = null;
 			this.NumIsol = null;
 			this.CurrentData = null;
-			this.datainizio = null;
-			this.datafine = null;
+			
 		
 		}
 	    
@@ -100,19 +96,19 @@ public class Dati {
 			CodCit = codCit;
 		}
 
-		public long getLat() {
+		public String getLat() {
 			return Lat;
 		}
 
-		public void setLat(long lat) {
+		public void setLat(String lat) {
 			Lat = lat;
 		}
 
-		public long getLon() {
+		public String getLon() {
 			return lon;
 		}
 
-		public void setLon(long lon) {
+		public void setLon(String lon) {
 			this.lon = lon;
 		}
 
@@ -124,59 +120,45 @@ public class Dati {
 			NomNaz = nomNaz;
 		}
 		
-		public Date getDatainizio() {
-			return datainizio;
-		}
+		
 
-		public void setDatainizio(Date datainizio) {
-			this.datainizio = datainizio;
-		}
-
-		public Date getDatafine() {
-			return datafine;
-		}
-
-		public void setDatafine(Date datafine) {
-			this.datafine = datafine;
-		}
-
-		public Integer getNumCas() {
+		public Long getNumCas() {
 			return NumCas;
 		}
 
-		public void setNumCas(Integer numCas) {
+		public void setNumCas(Long numCas) {
 			NumCas = numCas;
 		}
 
-		public Integer getNumMort() {
+		public Long getNumMort() {
 			return NumMort;
 		}
 
-		public void setNumMort(Integer numMort) {
+		public void setNumMort(Long numMort) {
 			NumMort = numMort;
 		}
 
-		public Integer getNumRicov() {
+		public Long getNumRicov() {
 			return NumRicov;
 		}
 
-		public void setNumRicov(Integer numRicov) {
+		public void setNumRicov(Long numRicov) {
 			NumRicov = numRicov;
 		}
 
-		public Integer getNumIsol() {
+		public Long getNumIsol() {
 			return NumIsol;
 		}
 
-		public void setNumIsol(Integer numIsol) {
+		public void setNumIsol(Long numIsol) {
 			NumIsol = numIsol;
 		}
 
-		public Date getCurrentData() {
+		public String getCurrentData() {
 			return CurrentData;
 		}
 
-		public void setCurrentData(Date currentData) {
+		public void setCurrentData(String currentData) {
 			CurrentData = currentData;
 		}
 
