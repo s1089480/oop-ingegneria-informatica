@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import database.Data_base;
-import modello.Dati;
-import modello.Metadati;
+import Statistiche.covid.ConfrontoCovidNazioni.database.Data_base;
+import Statistiche.covid.ConfrontoCovidNazioni.modello.Dati;
+import Statistiche.covid.ConfrontoCovidNazioni.modello.Metadati;
 
 
 @RestController
@@ -26,7 +26,7 @@ public class SimpleController {
 	}
 	
 	@RequestMapping(value = "/dati", method=RequestMethod.GET)
-	public ArrayList<Dati> getDataWithGet() {
+	public ArrayList<ArrayList<Dati>> getDataWithGet() {
 		
 		return Data_base.getDati();
 	}

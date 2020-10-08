@@ -1,4 +1,5 @@
-package modello;
+package Statistiche.covid.ConfrontoCovidNazioni.modello;
+
 
 import java.util.Date;
 
@@ -18,6 +19,7 @@ public class Dati {
         protected String CodCit;
         protected long Lat;
         protected long lon;
+        
         protected Integer NumCas;
 		protected Integer NumMort;
 		protected Integer NumRicov;
@@ -27,23 +29,23 @@ public class Dati {
 		protected Date datafine;
 		
 	    
-		
+
 		public Dati(String nomNaz, String codPaes, String prov, String nomCit, String codCit, long lat, long lon,
 				Integer numCas, Integer numMort, Integer numRicov, Integer numIsol, Date currentData, Date datainizio,
 				Date datafine) {
 			super();
-			this.NomNaz = nomNaz;
-			this.CodPaes = codPaes;
-			this.Prov = prov;
-			this.NomCit = nomCit;
-			this.CodCit = codCit;
-			this.Lat = lat;
+			NomNaz = nomNaz;
+			CodPaes = codPaes;
+			Prov = prov;
+			NomCit = nomCit;
+			CodCit = codCit;
+			Lat = lat;
 			this.lon = lon;
-			this.NumCas = numCas;
-			this.NumMort = numMort;
-			this.NumRicov = numRicov;
-			this.NumIsol = numIsol;
-			this.CurrentData = currentData;
+			NumCas = numCas;
+			NumMort = numMort;
+			NumRicov = numRicov;
+			NumIsol = numIsol;
+			CurrentData = currentData;
 			this.datainizio = datainizio;
 			this.datafine = datafine;
 		}
@@ -56,10 +58,10 @@ public class Dati {
 			this.CodCit = null;
 			this.Lat = 0;
 			this.lon = 0;
-			this.NumCas = 0;
-			this.NumMort = 0;
-			this.NumRicov = 0;
-			this.NumIsol = 0;
+			this.NumCas = null;
+			this.NumMort = null;
+			this.NumRicov = null;
+			this.NumIsol = null;
 			this.CurrentData = null;
 			this.datainizio = null;
 			this.datafine = null;
@@ -114,26 +116,6 @@ public class Dati {
 			this.lon = lon;
 		}
 
-		public Integer getNumRicov() {
-			return NumRicov;
-		}
-
-		public void setNumRicov(Integer numRicov) {
-			NumRicov = numRicov;
-		}
-
-		public Integer getNumIsol() {
-			return NumIsol;
-		}
-
-		public void setNumIsol(Integer numIsol) {
-			NumIsol = numIsol;
-		}
-
-	
-		
-		
-
 		public String getNomNaz() {
 			return NomNaz;
 		}
@@ -142,14 +124,6 @@ public class Dati {
 			NomNaz = nomNaz;
 		}
 		
-		 public Date getCurrentData() {
-				return CurrentData;
-			}
-		
-		public void setCurrentData(Date currentData) {
-			CurrentData = currentData;
-		}
-
 		public Date getDatainizio() {
 			return datainizio;
 		}
@@ -174,8 +148,6 @@ public class Dati {
 			NumCas = numCas;
 		}
 
-		
-
 		public Integer getNumMort() {
 			return NumMort;
 		}
@@ -184,6 +156,34 @@ public class Dati {
 			NumMort = numMort;
 		}
 
+		public Integer getNumRicov() {
+			return NumRicov;
+		}
+
+		public void setNumRicov(Integer numRicov) {
+			NumRicov = numRicov;
+		}
+
+		public Integer getNumIsol() {
+			return NumIsol;
+		}
+
+		public void setNumIsol(Integer numIsol) {
+			NumIsol = numIsol;
+		}
+
+		public Date getCurrentData() {
+			return CurrentData;
+		}
+
+		public void setCurrentData(Date currentData) {
+			CurrentData = currentData;
+		}
+
+		
+		
+
+		
 		
 	
 		

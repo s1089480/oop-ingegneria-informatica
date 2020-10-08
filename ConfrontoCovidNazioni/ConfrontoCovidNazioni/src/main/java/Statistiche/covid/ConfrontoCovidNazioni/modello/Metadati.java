@@ -1,4 +1,4 @@
-package modello;
+package Statistiche.covid.ConfrontoCovidNazioni.modello;
 
 public class Metadati {
 	String alias;
