@@ -16,6 +16,7 @@ public class ConfrontoCovidNazioniApplication {
 	{
 		SpringApplication.run(ConfrontoCovidNazioniApplication.class, args);
 		try {
+			
 			Data_base.Scaricadati();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

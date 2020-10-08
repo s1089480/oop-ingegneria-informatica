@@ -16,6 +16,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
+import modello.Dati;
 import modello.Metadati;
 
 import java.net.URL;
@@ -26,6 +27,7 @@ import java.net.MalformedURLException;
 public class Data_base  {
 
 	private static ArrayList<Metadati> metadati = new ArrayList<Metadati>();
+	private static ArrayList<Dati>  dati = new ArrayList<Dati>();
 	static String s="";
 	static String p="";
 	static String q="";
@@ -144,6 +146,10 @@ Fitalia.close();
 	
 }
 	
+	public static ArrayList<Dati> getDati() {
+		return dati;
+	}	
+	
 public static ArrayList<Metadati> getArrayMetadati() {
 		
 		metadati.add(new Metadati("NomNaz","Nome nazione","String"));
@@ -152,7 +158,7 @@ public static ArrayList<Metadati> getArrayMetadati() {
 		metadati.add(new Metadati("NomCit","Nome Città","String"));
 		metadati.add(new Metadati("CodCit","Codice della città","String"));
 		metadati.add(new Metadati("Lat","Latitudine","Double"));
-		metadati.add(new Metadati("Long","Longitudine","Double"));
+		metadati.add(new Metadati("Lon","Longitudine","Double"));
 		metadati.add(new Metadati("NumCas","Totale numero casi infetti","Integer"));
 		metadati.add(new Metadati("NumMort","Totale numero deceduti","Integer"));
 		metadati.add(new Metadati("NumRicov","Totale numero ricoverati","Integer"));

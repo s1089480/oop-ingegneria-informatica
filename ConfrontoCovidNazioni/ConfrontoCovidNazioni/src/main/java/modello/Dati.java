@@ -12,34 +12,127 @@ import java.util.Date;
 
 public class Dati {
         protected String NomNaz;
-        protected Date CurrentData;
-	    protected Date datainizio;
-	    protected Date datafine;
-		protected Integer NumCas;
-		protected Integer NumGuar;
+        protected String CodPaes;
+        protected String Prov;
+        protected String NomCit;
+        protected String CodCit;
+        protected long Lat;
+        protected long lon;
+        protected Integer NumCas;
 		protected Integer NumMort;
+		protected Integer NumRicov;
+		protected Integer NumIsol;
+		protected Date CurrentData;
+	    protected Date datainizio;
+		protected Date datafine;
 		
-		public Dati(Integer NumCas, Integer NumGuar, Integer NumMort, Date datainizio, Date datafine, String NomNaz, Date CurrentData) {
+	    
+		
+		public Dati(String nomNaz, String codPaes, String prov, String nomCit, String codCit, long lat, long lon,
+				Integer numCas, Integer numMort, Integer numRicov, Integer numIsol, Date currentData, Date datainizio,
+				Date datafine) {
 			super();
-			this.NomNaz=NomNaz;
-			this.CurrentData=CurrentData;
-			this.datainizio= datainizio;
-			this.datafine= datafine;
-			this.NumCas = NumCas;
-			this.NumGuar = NumGuar;
-			this.NumMort = NumMort;
+			this.NomNaz = nomNaz;
+			this.CodPaes = codPaes;
+			this.Prov = prov;
+			this.NomCit = nomCit;
+			this.CodCit = codCit;
+			this.Lat = lat;
+			this.lon = lon;
+			this.NumCas = numCas;
+			this.NumMort = numMort;
+			this.NumRicov = numRicov;
+			this.NumIsol = numIsol;
+			this.CurrentData = currentData;
+			this.datainizio = datainizio;
+			this.datafine = datafine;
 		}
-		
+
 		public Dati() {
-			
-			this.NomNaz=null;
-			this.CurrentData=null;
-			this.NumCas=0;
-			this.NumGuar=0;
-			this.NumMort=0;
-			this.datainizio=null;
-			this.datafine=null;
+			this.NomNaz = null;
+			this.CodPaes = null;
+			this.Prov = null;
+			this.NomCit = null;
+			this.CodCit = null;
+			this.Lat = 0;
+			this.lon = 0;
+			this.NumCas = 0;
+			this.NumMort = 0;
+			this.NumRicov = 0;
+			this.NumIsol = 0;
+			this.CurrentData = null;
+			this.datainizio = null;
+			this.datafine = null;
+		
 		}
+	    
+		public String getCodPaes() {
+			return CodPaes;
+		}
+
+		public void setCodPaes(String codPaes) {
+			CodPaes = codPaes;
+		}
+
+		public String getProv() {
+			return Prov;
+		}
+
+		public void setProv(String prov) {
+			Prov = prov;
+		}
+
+		public String getNomCit() {
+			return NomCit;
+		}
+
+		public void setNomCit(String nomCit) {
+			NomCit = nomCit;
+		}
+
+		public String getCodCit() {
+			return CodCit;
+		}
+
+		public void setCodCit(String codCit) {
+			CodCit = codCit;
+		}
+
+		public long getLat() {
+			return Lat;
+		}
+
+		public void setLat(long lat) {
+			Lat = lat;
+		}
+
+		public long getLon() {
+			return lon;
+		}
+
+		public void setLon(long lon) {
+			this.lon = lon;
+		}
+
+		public Integer getNumRicov() {
+			return NumRicov;
+		}
+
+		public void setNumRicov(Integer numRicov) {
+			NumRicov = numRicov;
+		}
+
+		public Integer getNumIsol() {
+			return NumIsol;
+		}
+
+		public void setNumIsol(Integer numIsol) {
+			NumIsol = numIsol;
+		}
+
+	
+		
+		
 
 		public String getNomNaz() {
 			return NomNaz;
@@ -81,13 +174,7 @@ public class Dati {
 			NumCas = numCas;
 		}
 
-		public Integer getNumGuar() {
-			return NumGuar;
-		}
-
-		public void setNumGuar(Integer numGuar) {
-			NumGuar = numGuar;
-		}
+		
 
 		public Integer getNumMort() {
 			return NumMort;

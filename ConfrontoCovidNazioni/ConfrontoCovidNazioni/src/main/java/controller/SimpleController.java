@@ -17,9 +17,16 @@ import modello.Metadati;
 public class SimpleController {
 
 	
-	@RequestMapping(value = "metadati", method=RequestMethod.GET)
+	@RequestMapping(value = "/metadati", method=RequestMethod.GET)
 	public ArrayList<Metadati> getMetadata(){
 		
 		return Data_base.getArrayMetadati();
+		
+	}
+	
+	@RequestMapping(value = "/dati", method=RequestMethod.GET)
+	public ArrayList<Dati> getDataWithGet() {
+		
+		return Data_base.getDati();
 	}
 }
