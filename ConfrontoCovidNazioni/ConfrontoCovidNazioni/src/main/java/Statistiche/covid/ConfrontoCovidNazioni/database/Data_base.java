@@ -47,7 +47,7 @@ public class Data_base  {
 
 
 
-		URL spagnaURL = new URL("https://api.covid19api.com/country/spain?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z");
+		URL spagnaURL = new URL("https://api.covid19api.com/country/spain?from=2020-03-01T00:00:00Z&to=2020-03-31T00:00:00Z");
 		URLConnection URLConnsp= spagnaURL.openConnection();
 		InputStream input1=URLConnsp.getInputStream();
 
@@ -88,7 +88,7 @@ public class Data_base  {
 
 
 
-		URL sveziaURL = new URL("https://api.covid19api.com/country/sweden?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z");
+		URL sveziaURL = new URL("https://api.covid19api.com/country/sweden?from=2020-03-01T00:00:00Z&to=2020-03-31T00:00:00Z");
 		URLConnection URLConnsv= sveziaURL.openConnection();
 		InputStream input2=URLConnsv.getInputStream();
 
@@ -123,7 +123,7 @@ public class Data_base  {
 		FileOutputStream Fitalia=new FileOutputStream(Italia);
 
 
-		URL italiaURL = new URL("https://api.covid19api.com/country/italy?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z");
+		URL italiaURL = new URL("https://api.covid19api.com/country/italy?from=2020-03-01T00:00:00Z&to=2020-03-31T00:00:00Z");
 		URLConnection URLConnit= italiaURL.openConnection();
 		InputStream input3=URLConnit.getInputStream();
 
@@ -183,24 +183,26 @@ public class Data_base  {
 	
 	
 	private static void convertiJSON (JSONArray json, ArrayList<Dati> lista) {
-		Dati dato = new Dati();
-		JSONObject oggettojson;
+		
 		for(int i = 0; i < json.size(); i++) {
+			Dati objdato = new Dati();
+			
+			JSONObject oggettojson;
 			
 			oggettojson = (JSONObject) json.get(i);
-			dato.setNomNaz((String) oggettojson.get("Country"));
-			dato.setCodPaes((String) oggettojson.get("CountryCode"));
-			dato.setProv((String) oggettojson.get("Province"));
-			dato.setNomCit((String) oggettojson.get("City"));
-			dato.setCodCit((String) oggettojson.get("CityCode"));
-			dato.setLat((String) oggettojson.get("Lat"));
-			dato.setLon((String) oggettojson.get("Lon"));
-			dato.setNumCas((Long) oggettojson.get("Confirmed"));
-			dato.setNumMort((Long) oggettojson.get("Deaths"));
-			dato.setNumRicov((Long) oggettojson.get("Recovered"));
-			dato.setNumIsol((Long) oggettojson.get("Active"));
-			dato.setCurrentData((String) oggettojson.get("Date"));
-			lista.add(dato);
+			objdato.setNomNaz((String) oggettojson.get("Country"));
+			objdato.setCodPaes((String) oggettojson.get("CountryCode"));
+			objdato.setProv((String) oggettojson.get("Province"));
+			objdato.setNomCit((String) oggettojson.get("City"));
+			objdato.setCodCit((String) oggettojson.get("CityCode"));
+			objdato.setLat((String) oggettojson.get("Lat"));
+			objdato.setLon((String) oggettojson.get("Lon"));
+			objdato.setNumCas((Long) oggettojson.get("Confirmed"));
+			objdato.setNumMort((Long) oggettojson.get("Deaths"));
+			objdato.setNumRicov((Long) oggettojson.get("Recovered"));
+			objdato.setNumIsol((Long) oggettojson.get("Active"));
+			objdato.setCurrentData((String) oggettojson.get("Date"));
+			lista.add(objdato);
 		}
 	}
 
