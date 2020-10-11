@@ -25,10 +25,12 @@ public class Dati {
 		protected Long NumRicov;
 		protected Long NumIsol;
 		protected String CurrentData;
+		
 	    
 		
 	    
 
+	
 		public Dati(String nomNaz, String codPaes, String prov, String nomCit, String codCit, String lat, String lon,
 				Long numCas, Long numMort, Long numRicov, Long numIsol, String currentData) {
 			super();
@@ -45,6 +47,7 @@ public class Dati {
 			NumIsol = numIsol;
 			CurrentData = currentData;
 			
+			
 		}
 
 		public Dati() {
@@ -60,9 +63,12 @@ public class Dati {
 			this.NumRicov = null;
 			this.NumIsol = null;
 			this.CurrentData = null;
-			
+		
 		
 		}
+		
+		
+
 	    
 		public String getCodPaes() {
 			return CodPaes;

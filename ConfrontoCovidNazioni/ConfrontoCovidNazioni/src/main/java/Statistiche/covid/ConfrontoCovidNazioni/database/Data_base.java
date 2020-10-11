@@ -31,7 +31,8 @@ public class Data_base  {
 	static String s="";
 	static String p="";
 	static String q="";
-
+	
+	
 	public static void Scaricadati() throws IOException
 	{
 		int a=0;
@@ -67,7 +68,7 @@ public class Data_base  {
 		try {
 			Object o1 = JSONValue.parseWithException(s);
 			objSpagna = (JSONArray)o1;
-			System.out.println("SGSG");
+			System.out.println("JsonArray Spagna pieno");
 			convertiJSON(objSpagna, DatiSpagna);
 
 		} catch (org.json.simple.parser.ParseException e) {
@@ -103,7 +104,7 @@ public class Data_base  {
 		try {
 			Object o2 = JSONValue.parseWithException(p);
 			objSvezia = (JSONArray)o2;
-			System.out.println("SGSG");
+			System.out.println("JSONArray Svezia pieno");
 			convertiJSON(objSvezia, DatiSvezia);
 
 		} catch (org.json.simple.parser.ParseException e) {
@@ -139,7 +140,7 @@ public class Data_base  {
 		try {
 			Object o3 = JSONValue.parseWithException(q);
 			objItalia = (JSONArray)o3;
-			System.out.println("SGSG");
+			System.out.println("JSONArray Italia pieno");
 			convertiJSON(objItalia, DatiItalia);
 		} catch (org.json.simple.parser.ParseException e) {
 			// TODO Auto-generated catch block
@@ -156,15 +157,19 @@ public class Data_base  {
 
 
 
-	public static ArrayList<ArrayList<Dati>> getDati() {
+	public static ArrayList<ArrayList<Dati>> ottieniDati() {
+		
 		ArrayList<ArrayList<Dati>> listaPaesi = new ArrayList<ArrayList<Dati>>();
 		listaPaesi.add(DatiSpagna);
 		listaPaesi.add(DatiItalia);
 		listaPaesi.add(DatiSvezia);
 		return listaPaesi ;
-	}	
+		}
+	
+	
+		
 
-	public static ArrayList<Metadati> getArrayMetadati() {
+	public static ArrayList<Metadati> ottieniArrayMetadati() {
 
 		metadati.add(new Metadati("NomNaz","Nome nazione","String"));
 		metadati.add(new Metadati("CodPaes","Codice di nazione","String"));
@@ -182,13 +187,13 @@ public class Data_base  {
 	}	
 	
 	
-	private static void convertiJSON (JSONArray json, ArrayList<Dati> lista) {
+	private static void convertiJSON (JSONArray json, ArrayList<Dati> lista/*data1,data2*/) {
 		
 		for(int i = 0; i < json.size(); i++) {
 			Dati objdato = new Dati();
 			
 			JSONObject oggettojson;
-			
+			//if la data è compresa(between) tra from e to
 			oggettojson = (JSONObject) json.get(i);
 			objdato.setNomNaz((String) oggettojson.get("Country"));
 			objdato.setCodPaes((String) oggettojson.get("CountryCode"));
