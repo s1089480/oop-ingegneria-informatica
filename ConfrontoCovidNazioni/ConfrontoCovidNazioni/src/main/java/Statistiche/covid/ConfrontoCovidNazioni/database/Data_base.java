@@ -7,16 +7,21 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLConnection;
+import java.security.Key;
+import java.text.ParseException;
 import java.util.ArrayList;
-
-
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
+import com.fasterxml.jackson.annotation.JsonFormat.Value;
+
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Dati;
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Metadati;
+import Statistiche.covid.ConfrontoCovidNazioni.gestione.gestioneData;
 
 import java.net.URL;
 
@@ -25,7 +30,8 @@ import java.net.URL;
 public class Data_base  {
 
 	private static ArrayList<Metadati> metadati = new ArrayList<Metadati>();
-	private static ArrayList<Dati> DatiSpagna = new ArrayList<Dati>()  ;
+	public static JSONArray intmap = new JSONArray();
+	public static ArrayList<Dati> DatiSpagna = new ArrayList<Dati>()  ;
 	private static ArrayList<Dati> DatiSvezia = new ArrayList<Dati>();
 	private static ArrayList<Dati> DatiItalia = new ArrayList<Dati>();
 	static String s="";
@@ -69,7 +75,8 @@ public class Data_base  {
 			Object o1 = JSONValue.parseWithException(s);
 			objSpagna = (JSONArray)o1;
 			System.out.println("JsonArray Spagna pieno");
-			convertiJSON(objSpagna, DatiSpagna);
+			 intmap= objSpagna;
+			
 
 		} catch (org.json.simple.parser.ParseException e) {
 			// TODO Auto-generated catch block
@@ -105,7 +112,7 @@ public class Data_base  {
 			Object o2 = JSONValue.parseWithException(p);
 			objSvezia = (JSONArray)o2;
 			System.out.println("JSONArray Svezia pieno");
-			convertiJSON(objSvezia, DatiSvezia);
+		//	convertiJSON(objSvezia, DatiSvezia);
 
 		} catch (org.json.simple.parser.ParseException e) {
 			// TODO Auto-generated catch block
@@ -141,7 +148,7 @@ public class Data_base  {
 			Object o3 = JSONValue.parseWithException(q);
 			objItalia = (JSONArray)o3;
 			System.out.println("JSONArray Italia pieno");
-			convertiJSON(objItalia, DatiItalia);
+		//	convertiJSON(objItalia, DatiItalia, from);
 		} catch (org.json.simple.parser.ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -187,14 +194,16 @@ public class Data_base  {
 	}	
 	
 	
-	private static void convertiJSON (JSONArray json, ArrayList<Dati> lista/*data1,data2*/) {
+	public static void convertiJSON (JSONArray json, ArrayList<Dati> lista,String datainizio) throws ParseException {
 		
 		for(int i = 0; i < json.size(); i++) {
 			Dati objdato = new Dati();
 			
 			JSONObject oggettojson;
-			//if la data è compresa(between) tra from e to
+			
+			
 			oggettojson = (JSONObject) json.get(i);
+			if((gestioneData.convertidata((String) oggettojson.get("date"))).after(gestioneData.convertidata(datainizio))){
 			objdato.setNomNaz((String) oggettojson.get("Country"));
 			objdato.setCodPaes((String) oggettojson.get("CountryCode"));
 			objdato.setProv((String) oggettojson.get("Province"));
@@ -208,8 +217,9 @@ public class Data_base  {
 			objdato.setNumIsol((Long) oggettojson.get("Active"));
 			objdato.setCurrentData((String) oggettojson.get("Date"));
 			lista.add(objdato);
+			}
 		}
-	}
+}
 
 
 }

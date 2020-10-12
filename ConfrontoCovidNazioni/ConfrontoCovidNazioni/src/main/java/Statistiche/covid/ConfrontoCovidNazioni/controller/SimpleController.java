@@ -1,5 +1,6 @@
 package Statistiche.covid.ConfrontoCovidNazioni.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.xml.crypto.Data;
@@ -36,9 +37,9 @@ public class SimpleController {
      }
 	
 	@RequestMapping(value = "/datiperiodo/{from}", method=RequestMethod.POST)
-    public ArrayList<ArrayList<Dati>> ottieniDatiPerPeriodo(@PathVariable("from") String from)
+    public ArrayList<ArrayList<Dati>> ottieniDatiPerPeriodo(@PathVariable("from") String from) throws ParseException
 	{
-		//ci vuole un altro metodo
+		Data_base.convertiJSON(Data_base.intmap, Data_base.DatiSpagna,from);
 		return Data_base.ottieniDati();
         
 		
