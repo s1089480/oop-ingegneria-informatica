@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import Statistiche.covid.ConfrontoCovidNazioni.database.Data_base;
+import Statistiche.covid.ConfrontoCovidNazioni.gestione.gestioneData;
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Dati;
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Metadati;
 
@@ -36,10 +37,12 @@ public class SimpleController {
 		return Data_base.ottieniDati();
      }
 	
-	@RequestMapping(value = "/datiperiodo/{from}", method=RequestMethod.POST)
-    public ArrayList<ArrayList<Dati>> ottieniDatiPerPeriodo(@PathVariable("from") String from) throws ParseException
+	@RequestMapping(value = "/datiperiodo", method=RequestMethod.POST)
+    public ArrayList<ArrayList<Dati>> ottieniDatiPerPeriodo(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException
 	{
-		Data_base.convertiJSON(Data_base.intmap, Data_base.DatiSpagna,from);
+         Data_base.convertiJSON(Data_base.intmap1,Data_base.DatiSpagna,from,to);
+         Data_base.convertiJSON(Data_base.intmap2,Data_base.DatiSvezia,from,to);
+         Data_base.convertiJSON(Data_base.intmap3,Data_base.DatiItalia,from,to);
 		return Data_base.ottieniDati();
         
 		

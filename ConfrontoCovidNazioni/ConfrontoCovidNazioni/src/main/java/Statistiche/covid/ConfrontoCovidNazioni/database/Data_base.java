@@ -30,10 +30,12 @@ import java.net.URL;
 public class Data_base  {
 
 	private static ArrayList<Metadati> metadati = new ArrayList<Metadati>();
-	public static JSONArray intmap = new JSONArray();
+	public static JSONArray intmap1 = new JSONArray();
+	public static JSONArray intmap2 = new JSONArray();
+	public static JSONArray intmap3 = new JSONArray();
 	public static ArrayList<Dati> DatiSpagna = new ArrayList<Dati>()  ;
-	private static ArrayList<Dati> DatiSvezia = new ArrayList<Dati>();
-	private static ArrayList<Dati> DatiItalia = new ArrayList<Dati>();
+	public static ArrayList<Dati> DatiSvezia = new ArrayList<Dati>();
+	public static ArrayList<Dati> DatiItalia = new ArrayList<Dati>();
 	static String s="";
 	static String p="";
 	static String q="";
@@ -75,13 +77,13 @@ public class Data_base  {
 			Object o1 = JSONValue.parseWithException(s);
 			objSpagna = (JSONArray)o1;
 			System.out.println("JsonArray Spagna pieno");
-			 intmap= objSpagna;
+			 intmap1= objSpagna;
 			
 
 		} catch (org.json.simple.parser.ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 
 		reader1.close();
 		input1.close();
@@ -112,7 +114,7 @@ public class Data_base  {
 			Object o2 = JSONValue.parseWithException(p);
 			objSvezia = (JSONArray)o2;
 			System.out.println("JSONArray Svezia pieno");
-		//	convertiJSON(objSvezia, DatiSvezia);
+		    intmap2=objSvezia;
 
 		} catch (org.json.simple.parser.ParseException e) {
 			// TODO Auto-generated catch block
@@ -148,7 +150,7 @@ public class Data_base  {
 			Object o3 = JSONValue.parseWithException(q);
 			objItalia = (JSONArray)o3;
 			System.out.println("JSONArray Italia pieno");
-		//	convertiJSON(objItalia, DatiItalia, from);
+            intmap3=objItalia;
 		} catch (org.json.simple.parser.ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -194,16 +196,19 @@ public class Data_base  {
 	}	
 	
 	
-	public static void convertiJSON (JSONArray json, ArrayList<Dati> lista,String datainizio) throws ParseException {
+	public static void convertiJSON (JSONArray json, ArrayList<Dati> lista,String datainizio,String datafine) throws ParseException {
 		
 		for(int i = 0; i < json.size(); i++) {
 			Dati objdato = new Dati();
 			
 			JSONObject oggettojson;
 			
-			
 			oggettojson = (JSONObject) json.get(i);
-			if((gestioneData.convertidata((String) oggettojson.get("date"))).after(gestioneData.convertidata(datainizio))){
+			if(((gestioneData.convertidata((String)oggettojson.get("Date"))).after(gestioneData.convertidata(datainizio))
+					||((gestioneData.convertidata((String)oggettojson.get("Date"))).equals(gestioneData.convertidata(datainizio))))
+					&&((gestioneData.convertidata((String)oggettojson.get("Date")).before(gestioneData.convertidata(datafine)))
+					||((gestioneData.convertidata((String)oggettojson.get("Date"))).equals(gestioneData.convertidata(datafine)))))
+			{
 			objdato.setNomNaz((String) oggettojson.get("Country"));
 			objdato.setCodPaes((String) oggettojson.get("CountryCode"));
 			objdato.setProv((String) oggettojson.get("Province"));
