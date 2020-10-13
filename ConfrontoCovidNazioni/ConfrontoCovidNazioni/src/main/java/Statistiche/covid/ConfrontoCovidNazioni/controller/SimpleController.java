@@ -40,17 +40,18 @@ public class SimpleController {
 	@RequestMapping(value = "/datiperiodo", method=RequestMethod.POST)
     public ArrayList<ArrayList<Dati>> ottieniDatiPerPeriodo(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException
 	{
+		if((gestioneData.convertidata(from).after(gestioneData.convertidata("2020-02-28T00:00:00Z"))))
+		{
          Data_base.convertiJSON(Data_base.intmap1,Data_base.DatiSpagna,from,to);
          Data_base.convertiJSON(Data_base.intmap2,Data_base.DatiSvezia,from,to);
          Data_base.convertiJSON(Data_base.intmap3,Data_base.DatiItalia,from,to);
+		 
+		}
+		else System.out.println("inserire data fra il '2020-03-01T00:00:00Z' e il");
 		return Data_base.ottieniDati();
-        
-		
     }
 	
-//	@RequestMapping(value= "/datipaese", method = RequestMethod.POST)
-	//public ArrayList<Dati> OttieniDatiPaese(RequestBody String){
-		
+
 		
 
 }
