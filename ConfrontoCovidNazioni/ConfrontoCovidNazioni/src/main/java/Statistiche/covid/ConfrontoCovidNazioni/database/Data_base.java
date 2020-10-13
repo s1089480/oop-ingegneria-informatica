@@ -169,6 +169,7 @@ public class Data_base  {
 	public static ArrayList<ArrayList<Dati>> ottieniDati() {
 		
 		ArrayList<ArrayList<Dati>> listaPaesi = new ArrayList<ArrayList<Dati>>();
+		
 		listaPaesi.add(DatiSpagna);
 		listaPaesi.add(DatiItalia);
 		listaPaesi.add(DatiSvezia);
@@ -197,7 +198,7 @@ public class Data_base  {
 	
 	
 	public static void convertiJSON (JSONArray json, ArrayList<Dati> lista,String datainizio,String datafine) throws ParseException {
-		
+		lista.clear();
 		for(int i = 0; i < json.size(); i++) {
 			Dati objdato = new Dati();
 			

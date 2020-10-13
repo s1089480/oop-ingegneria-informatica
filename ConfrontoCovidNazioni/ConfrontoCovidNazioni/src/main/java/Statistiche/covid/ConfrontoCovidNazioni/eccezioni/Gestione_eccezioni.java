@@ -20,7 +20,8 @@ public class Gestione_eccezioni implements ErrorController {
 	        	message = "errore: Il percorso specificato non è valido";
 	        }
 	        if(codiceErrore == 500) {
-	        	message = "errore: Errore interno del server, inserire la data corretta del tipo 'aaaa-MM-ggT00:00:00Z', esempio:'2020-03-01T00:00:00Z' ";
+	        	message = "errore: Errore interno del server, inserire la data corretta del tipo 'aaaa-MM-ggT00:00:00Z', esempio:'2020-03-01T00:00:00Z'"
+	        			+ " ,inserire una data compresa tra il 2020-03-01 e il 2020-08-31, 'from' deve essere antecedente rispetto a 'to' ";
 	        }
 	        if(codiceErrore==400) {
 	        	message = "errore: La forma richiesta non è corretta, inserire entrambi i parametri from e to del tipo richiesto";

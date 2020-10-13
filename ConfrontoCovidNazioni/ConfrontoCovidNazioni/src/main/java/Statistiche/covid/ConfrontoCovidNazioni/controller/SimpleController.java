@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import Statistiche.covid.ConfrontoCovidNazioni.database.Data_base;
+import Statistiche.covid.ConfrontoCovidNazioni.eccezioni.Eccezioni;
 import Statistiche.covid.ConfrontoCovidNazioni.gestione.gestioneData;
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Dati;
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Metadati;
@@ -38,16 +39,21 @@ public class SimpleController {
      }
 	
 	@RequestMapping(value = "/datiperiodo", method=RequestMethod.POST)
-    public ArrayList<ArrayList<Dati>> ottieniDatiPerPeriodo(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException
+    public ArrayList<ArrayList<Dati>> ottieniDatiPerPeriodo(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni
 	{
-		if((gestioneData.convertidata(from).after(gestioneData.convertidata("2020-02-28T00:00:00Z"))))
+		
+		if(((gestioneData.convertidata(from).after(gestioneData.convertidata("2020-02-29T00:00:00Z"))))
+				&&((gestioneData.convertidata(to).before(gestioneData.convertidata("2020-09-01T00:00:00Z")))))
+		{
+		if(gestioneData.convertidata(to).after(gestioneData.convertidata(from)))
 		{
          Data_base.convertiJSON(Data_base.intmap1,Data_base.DatiSpagna,from,to);
          Data_base.convertiJSON(Data_base.intmap2,Data_base.DatiSvezia,from,to);
          Data_base.convertiJSON(Data_base.intmap3,Data_base.DatiItalia,from,to);
-		 
+		
+		}else throw new Eccezioni("la data 'from' deve essere antecedente rispetto alla data 'to' !!");
 		}
-		else System.out.println("inserire data fra il '2020-03-01T00:00:00Z' e il");
+		else throw new Eccezioni("inserire una data compresa tra il 2020-03-01 e il 2020-08-31 ");
 		return Data_base.ottieniDati();
     }
 	
