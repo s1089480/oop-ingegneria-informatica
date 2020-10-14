@@ -69,6 +69,10 @@ public class SimpleController {
 		return Data_base.ottieniDati();
     }
 	
+	
+	//@RequestMapping(value="statistiche",method=RequestMethod.POST)
+	//chiamare il terzo costruttore di Statistiche
+	
 
 		
 
