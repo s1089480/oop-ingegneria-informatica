@@ -226,6 +226,37 @@ public class Data_base  {
 			}
 		}
 }
+	
+	public static void convertigiornoJSON(JSONArray json, ArrayList<Dati> arraydati,String data) throws ParseException {
+		
+		arraydati.clear();
+		for(int j=0;j<json.size();j++) {
+			
+			Dati oggettodato = new Dati();
+			
+			JSONObject oggetto;
+			oggetto=(JSONObject)json.get(j);
+			
+			if(gestioneData.convertidata((String)oggetto.get("Date")).equals(gestioneData.convertidata(data))) {
+				
+				
+				oggettodato.setNomNaz((String) oggetto.get("Country"));
+				oggettodato.setCodPaes((String) oggetto.get("CountryCode"));
+				oggettodato.setProv((String) oggetto.get("Province"));
+				oggettodato.setNomCit((String) oggetto.get("City"));
+				oggettodato.setCodCit((String) oggetto.get("CityCode"));
+				oggettodato.setLat((String) oggetto.get("Lat"));
+				oggettodato.setLon((String) oggetto.get("Lon"));
+				oggettodato.setNumCas((Long) oggetto.get("Confirmed"));
+				oggettodato.setNumMort((Long) oggetto.get("Deaths"));
+				oggettodato.setNumRicov((Long) oggetto.get("Recovered"));
+				oggettodato.setNumIsol((Long) oggetto.get("Active"));
+				oggettodato.setCurrentData((String) oggetto.get("Date"));
+				arraydati.add(oggettodato);
+			}
+		}
+		
+	}
 
 
 }

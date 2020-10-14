@@ -33,10 +33,22 @@ public class SimpleController {
 		return new ResponseEntity<ArrayList<Metadati>>(Data_base.ottieniArrayMetadati(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/dati", method=RequestMethod.GET)
-	public ArrayList<ArrayList<Dati>> ottieniTuttiIDati() {
+	
+	
+	@RequestMapping(value = "/datigiorno", method=RequestMethod.POST)
+	public ArrayList<ArrayList<Dati>> ottieniDatiSingoloGiorno(@RequestParam(name="giorno") String giorno) throws ParseException, Eccezioni {
+		if(((gestioneData.convertidata(giorno).after(gestioneData.convertidata("2020-02-29T00:00:00Z"))))
+				&&((gestioneData.convertidata(giorno).before(gestioneData.convertidata("2020-09-01T00:00:00Z"))))) {
+		Data_base.convertigiornoJSON(Data_base.intmap1,Data_base.DatiSpagna,giorno);
+		Data_base.convertigiornoJSON(Data_base.intmap2,Data_base.DatiSvezia,giorno);
+		Data_base.convertigiornoJSON(Data_base.intmap3,Data_base.DatiItalia,giorno);
+
+		
+		}else throw new Eccezioni("il giorno dev'essere compreso tra il 2020-03-01 e il 2020-08-31");
 		return Data_base.ottieniDati();
      }
+	
+	
 	
 	@RequestMapping(value = "/datiperiodo", method=RequestMethod.POST)
     public ArrayList<ArrayList<Dati>> ottieniDatiPerPeriodo(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni
