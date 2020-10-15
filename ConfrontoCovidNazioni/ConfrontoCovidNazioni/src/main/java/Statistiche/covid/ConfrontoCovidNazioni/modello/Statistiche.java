@@ -16,9 +16,14 @@ public class Statistiche {
 	private long massimoNumMort;
 	private long massimoNumRicov;
 	
+	private double devStandCas;
+	private double devStandMort;
+	private double devStandRicov;
+	
+	 	
 	
 	public Statistiche(double mediaNumCas, double mediaNumMort, double mediaNumRicov, long massimoNumCas,
-			long massimoNumMort, long massimoNumRicov) {
+			long massimoNumMort, long massimoNumRicov, double devStandCas, double devStandMort, double devStandRicov) {
 		super();
 		this.mediaNumCas = mediaNumCas;
 		this.mediaNumMort = mediaNumMort;
@@ -26,6 +31,9 @@ public class Statistiche {
 		this.massimoNumCas = massimoNumCas;
 		this.massimoNumMort = massimoNumMort;
 		this.massimoNumRicov = massimoNumRicov;
+		this.devStandCas = devStandCas;
+		this.devStandMort = devStandMort;
+		this.devStandRicov = devStandRicov;
 	}
 	
 	public Statistiche() {
@@ -36,6 +44,10 @@ public class Statistiche {
 		this.massimoNumCas = 0;
 		this.massimoNumMort = 0;
 		this.massimoNumRicov = 0;
+		
+		this.devStandCas= 0;
+		this.devStandMort=0;
+		this.devStandRicov=0;
 	}
 	public Statistiche(JSONArray ArrayJson, String dataInizio,String dataFine) throws ParseException {
 		this.mediaNumCas = GestioneStatistiche.mediaCasi(ArrayJson,dataInizio,dataFine);
@@ -45,6 +57,10 @@ public class Statistiche {
 		this.massimoNumCas = GestioneStatistiche.massimoNumeroCasi(ArrayJson,dataInizio,dataFine);
 		this.massimoNumMort = GestioneStatistiche.massimoNumeroMorti(ArrayJson,dataInizio,dataFine);
 		this.massimoNumRicov = GestioneStatistiche.massimoNumeroRicoverati(ArrayJson,dataInizio,dataFine);
+		
+		this.devStandCas= GestioneStatistiche.DeviazioneStandardCasi(ArrayJson,dataInizio,dataFine);
+		this.devStandMort=GestioneStatistiche.DeviazioneStandardMorti(ArrayJson,dataInizio,dataFine);
+		this.devStandRicov=GestioneStatistiche.DeviazioneStandardRicoverati(ArrayJson,dataInizio,dataFine);
 	}
   
 	
@@ -98,7 +114,32 @@ public class Statistiche {
 		this.massimoNumRicov = massimoNumRicov;
 	}
 
+	public double getDevStandCas() {
+		return devStandCas;
+	}
 
+	public void setDevStandCas(double devStandCas) {
+		this.devStandCas = devStandCas;
+	}
+
+	public double getDevStandMort() {
+		return devStandMort;
+	}
+
+	public void setDevStandMort(double devStandMort) {
+		this.devStandMort = devStandMort;
+	}
+
+	public double getDevStandRicov() {
+		return devStandRicov;
+	}
+
+	public void setDevStandRicov(double devStandRicov) {
+		this.devStandRicov = devStandRicov;
+	}
+
+
+	
 	
 	
 	

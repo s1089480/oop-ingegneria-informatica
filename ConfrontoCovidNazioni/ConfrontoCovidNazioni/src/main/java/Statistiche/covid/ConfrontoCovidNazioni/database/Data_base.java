@@ -21,7 +21,9 @@ import com.fasterxml.jackson.annotation.JsonFormat.Value;
 
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Dati;
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Metadati;
+import Statistiche.covid.ConfrontoCovidNazioni.modello.Statistiche;
 import Statistiche.covid.ConfrontoCovidNazioni.gestione.gestioneData;
+import Statistiche.covid.ConfrontoCovidNazioni.gestione.GestioneStatistiche;
 
 import java.net.URL;
 
@@ -258,6 +260,24 @@ public class Data_base  {
 		
 	}
 
+	public static void estraiStats(JSONArray jArray,ArrayList<Statistiche> stats,String data1, String data2) throws ParseException {
+		
+		stats.clear();
+		Statistiche objstats= new Statistiche();
+		objstats.setMediaNumCas(GestioneStatistiche.mediaCasi(jArray,data1,data2));
+		objstats.setMediaNumMort(GestioneStatistiche.mediaMorti(jArray,data1,data2));
+		objstats.setMediaNumRicov(GestioneStatistiche.mediaRicoverati(jArray,data1,data2));
+		objstats.setMassimoNumCas(GestioneStatistiche.massimoNumeroCasi(jArray,data1,data2));
+		objstats.setMassimoNumMort(GestioneStatistiche.massimoNumeroMorti(jArray,data1,data2));
+		objstats.setMassimoNumRicov(GestioneStatistiche.massimoNumeroRicoverati(jArray,data1,data2));
+		objstats.setDevStandCas(GestioneStatistiche.DeviazioneStandardCasi(jArray,data1,data2));
+		objstats.setDevStandMort(GestioneStatistiche.DeviazioneStandardMorti(jArray,data1,data2));
+		objstats.setDevStandRicov(GestioneStatistiche.DeviazioneStandardRicoverati(jArray,data1,data2));
+
+		stats.add(objstats);
+
+
+	}
 
 }
 

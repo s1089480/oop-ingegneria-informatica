@@ -20,6 +20,7 @@ import Statistiche.covid.ConfrontoCovidNazioni.eccezioni.Eccezioni;
 import Statistiche.covid.ConfrontoCovidNazioni.gestione.gestioneData;
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Dati;
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Metadati;
+import Statistiche.covid.ConfrontoCovidNazioni.modello.Statistiche;
 
 
 @RestController
@@ -70,9 +71,51 @@ public class SimpleController {
     }
 	
 	
-	//@RequestMapping(value="statistiche",method=RequestMethod.POST)
-	//chiamare il terzo costruttore di Statistiche
+	@RequestMapping(value="/statspagna",method=RequestMethod.POST)
+    public ArrayList<Statistiche> ottieniStatisticheSpagna(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni{
+		    ArrayList<Statistiche> statisticheSpagna= new ArrayList<Statistiche>();
+		    if(((gestioneData.convertidata(from).after(gestioneData.convertidata("2020-02-29T00:00:00Z"))))
+					&&((gestioneData.convertidata(to).before(gestioneData.convertidata("2020-09-01T00:00:00Z")))))
+			{
+			if(gestioneData.convertidata(to).after(gestioneData.convertidata(from)))
+			{
+			Data_base.estraiStats(Data_base.intmap1, statisticheSpagna,from,to);
+			
+			}else throw new Eccezioni("la data 'from' deve essere antecedente rispetto alla data 'to' !!");
+			
+			}else throw new Eccezioni("inserire una data compresa tra il 2020-03-01 e il 2020-08-31 ");
+		   return statisticheSpagna;
+	}
 	
+	@RequestMapping(value="/statsvezia",method=RequestMethod.POST)
+    public ArrayList<Statistiche> ottieniStatisticheSvezia(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni{
+		    ArrayList<Statistiche> statisticheSvezia= new ArrayList<Statistiche>();
+		    if(((gestioneData.convertidata(from).after(gestioneData.convertidata("2020-02-29T00:00:00Z"))))
+					&&((gestioneData.convertidata(to).before(gestioneData.convertidata("2020-09-01T00:00:00Z")))))
+			{
+			if(gestioneData.convertidata(to).after(gestioneData.convertidata(from)))
+			{
+			Data_base.estraiStats(Data_base.intmap2, statisticheSvezia,from,to);
+			}else throw new Eccezioni("la data 'from' deve essere antecedente rispetto alla data 'to' !!");
+			
+			}else throw new Eccezioni("inserire una data compresa tra il 2020-03-01 e il 2020-08-31 ");
+		   return statisticheSvezia;
+	}
+	
+	@RequestMapping(value="/statitalia",method=RequestMethod.POST)
+    public ArrayList<Statistiche> ottieniStatisticheItalia(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni{
+		    ArrayList<Statistiche> statisticheItalia= new ArrayList<Statistiche>();
+		    if(((gestioneData.convertidata(from).after(gestioneData.convertidata("2020-02-29T00:00:00Z"))))
+					&&((gestioneData.convertidata(to).before(gestioneData.convertidata("2020-09-01T00:00:00Z")))))
+			{
+			if(gestioneData.convertidata(to).after(gestioneData.convertidata(from)))
+			{
+			Data_base.estraiStats(Data_base.intmap3, statisticheItalia,from,to);
+            }else throw new Eccezioni("la data 'from' deve essere antecedente rispetto alla data 'to' !!");
+			
+			}else throw new Eccezioni("inserire una data compresa tra il 2020-03-01 e il 2020-08-31 ");
+		   return statisticheItalia;
+	}
 
 		
 
