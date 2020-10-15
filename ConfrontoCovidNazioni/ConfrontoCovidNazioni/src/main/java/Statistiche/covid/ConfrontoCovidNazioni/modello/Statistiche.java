@@ -20,10 +20,39 @@ public class Statistiche {
 	private double devStandMort;
 	private double devStandRicov;
 	
+	private double percentMediaCasiSpagSviz;
+	private double percentMediaMortiSpagSviz;
+	private double percentMediaRicovSpagSviz;
+	private double percentDevStandCasiSpagSviz;
+	private double percentDevStandMortiSpagSviz;
+	private double percentDevStandRicovSpagSviz;
+	private double percentMediaCasiSpagIta;
+	private double percentMediaMortiSpagIta;
+	private double percentMediaRicovSpagIta;
+	private double percentDevStandCasiSpagIta;
+	private double percentDevStandMortiSpagIta;
+	private double percentDevStandRicovSpagIta;
+	private double percentMediaCasiSvizIta;
+	private double percentMediaMortiSvizIta;
+	private double percentMediaRicovSvizIta;
+	private double percentDevStandCasiSvizIta;
+	private double percentDevStandMortiSvizIta;
+	private double percentDevStandRicovSvizIta;
+	
+	
 	 	
 	
+	
+	
 	public Statistiche(double mediaNumCas, double mediaNumMort, double mediaNumRicov, long massimoNumCas,
-			long massimoNumMort, long massimoNumRicov, double devStandCas, double devStandMort, double devStandRicov) {
+			long massimoNumMort, long massimoNumRicov, double devStandCas, double devStandMort, double devStandRicov,
+			double percentMediaCasiSpagSviz, double percentMediaMortiSpagSviz, double percentMediaRicovSpagSviz,
+			double percentDevStandCasiSpagSviz, double percentDevStandMortiSpagSviz,
+			double percentDevStandRicovSpagSviz, double percentMediaCasiSpagIta, double percentMediaMortiSpagIta,
+			double percentMediaRicovSpagIta, double percentDevStandCasiSpagIta, double percentDevStandMortiSpagIta,
+			double percentDevStandRicovSpagIta, double percentMediaCasiSvizIta, double percentMediaMortiSvizIta,
+			double percentMediaRicovSvizIta, double percentDevStandCasiSvizIta, double percentDevStandMortiSvizIta,
+			double percentDevStandRicovSvizIta) {
 		super();
 		this.mediaNumCas = mediaNumCas;
 		this.mediaNumMort = mediaNumMort;
@@ -34,8 +63,28 @@ public class Statistiche {
 		this.devStandCas = devStandCas;
 		this.devStandMort = devStandMort;
 		this.devStandRicov = devStandRicov;
+		this.percentMediaCasiSpagSviz = percentMediaCasiSpagSviz;
+		this.percentMediaMortiSpagSviz = percentMediaMortiSpagSviz;
+		this.percentMediaRicovSpagSviz = percentMediaRicovSpagSviz;
+		this.percentDevStandCasiSpagSviz = percentDevStandCasiSpagSviz;
+		this.percentDevStandMortiSpagSviz = percentDevStandMortiSpagSviz;
+		this.percentDevStandRicovSpagSviz = percentDevStandRicovSpagSviz;
+		this.percentMediaCasiSpagIta = percentMediaCasiSpagIta;
+		this.percentMediaMortiSpagIta = percentMediaMortiSpagIta;
+		this.percentMediaRicovSpagIta = percentMediaRicovSpagIta;
+		this.percentDevStandCasiSpagIta = percentDevStandCasiSpagIta;
+		this.percentDevStandMortiSpagIta = percentDevStandMortiSpagIta;
+		this.percentDevStandRicovSpagIta = percentDevStandRicovSpagIta;
+		this.percentMediaCasiSvizIta = percentMediaCasiSvizIta;
+		this.percentMediaMortiSvizIta = percentMediaMortiSvizIta;
+		this.percentMediaRicovSvizIta = percentMediaRicovSvizIta;
+		this.percentDevStandCasiSvizIta = percentDevStandCasiSvizIta;
+		this.percentDevStandMortiSvizIta = percentDevStandMortiSvizIta;
+		this.percentDevStandRicovSvizIta = percentDevStandRicovSvizIta;
 	}
-	
+
+
+
 	public Statistiche() {
 		this.mediaNumCas = 0;
 		this.mediaNumMort = 0;
@@ -49,19 +98,7 @@ public class Statistiche {
 		this.devStandMort=0;
 		this.devStandRicov=0;
 	}
-	public Statistiche(JSONArray ArrayJson, String dataInizio,String dataFine) throws ParseException {
-		this.mediaNumCas = GestioneStatistiche.mediaCasi(ArrayJson,dataInizio,dataFine);
-		this.mediaNumMort = GestioneStatistiche.mediaMorti(ArrayJson,dataInizio,dataFine);
-		this.mediaNumRicov = GestioneStatistiche.mediaRicoverati(ArrayJson,dataInizio,dataFine);
-		
-		this.massimoNumCas = GestioneStatistiche.massimoNumeroCasi(ArrayJson,dataInizio,dataFine);
-		this.massimoNumMort = GestioneStatistiche.massimoNumeroMorti(ArrayJson,dataInizio,dataFine);
-		this.massimoNumRicov = GestioneStatistiche.massimoNumeroRicoverati(ArrayJson,dataInizio,dataFine);
-		
-		this.devStandCas= GestioneStatistiche.DeviazioneStandardCasi(ArrayJson,dataInizio,dataFine);
-		this.devStandMort=GestioneStatistiche.DeviazioneStandardMorti(ArrayJson,dataInizio,dataFine);
-		this.devStandRicov=GestioneStatistiche.DeviazioneStandardRicoverati(ArrayJson,dataInizio,dataFine);
-	}
+	
   
 	
 	public double getMediaNumCas() {
@@ -139,6 +176,223 @@ public class Statistiche {
 	}
 
 
+
+	public double getPercentMediaCasiSpagSviz() {
+		return percentMediaCasiSpagSviz;
+	}
+
+
+
+	public void setPercentMediaCasiSpagSviz(double percentMediaCasiSpagSviz) {
+		this.percentMediaCasiSpagSviz = percentMediaCasiSpagSviz;
+	}
+
+
+
+	public double getPercentMediaMortiSpagSviz() {
+		return percentMediaMortiSpagSviz;
+	}
+
+
+
+	public void setPercentMediaMortiSpagSviz(double percentMediaMortiSpagSviz) {
+		this.percentMediaMortiSpagSviz = percentMediaMortiSpagSviz;
+	}
+
+
+
+	public double getPercentMediaRicovSpagSviz() {
+		return percentMediaRicovSpagSviz;
+	}
+
+
+
+	public void setPercentMediaRicovSpagSviz(double percentMediaRicovSpagSviz) {
+		this.percentMediaRicovSpagSviz = percentMediaRicovSpagSviz;
+	}
+
+
+
+	public double getPercentDevStandCasiSpagSviz() {
+		return percentDevStandCasiSpagSviz;
+	}
+
+
+
+	public void setPercentDevStandCasiSpagSviz(double percentDevStandCasiSpagSviz) {
+		this.percentDevStandCasiSpagSviz = percentDevStandCasiSpagSviz;
+	}
+
+
+
+	public double getPercentDevStandMortiSpagSviz() {
+		return percentDevStandMortiSpagSviz;
+	}
+
+
+
+	public void setPercentDevStandMortiSpagSviz(double percentDevStandMortiSpagSviz) {
+		this.percentDevStandMortiSpagSviz = percentDevStandMortiSpagSviz;
+	}
+
+
+
+	public double getPercentDevStandRicovSpagSviz() {
+		return percentDevStandRicovSpagSviz;
+	}
+
+
+
+	public void setPercentDevStandRicovSpagSviz(double percentDevStandRicovSpagSviz) {
+		this.percentDevStandRicovSpagSviz = percentDevStandRicovSpagSviz;
+	}
+
+
+
+	public double getPercentMediaCasiSpagIta() {
+		return percentMediaCasiSpagIta;
+	}
+
+
+
+	public void setPercentMediaCasiSpagIta(double percentMediaCasiSpagIta) {
+		this.percentMediaCasiSpagIta = percentMediaCasiSpagIta;
+	}
+
+
+
+	public double getPercentMediaMortiSpagIta() {
+		return percentMediaMortiSpagIta;
+	}
+
+
+
+	public void setPercentMediaMortiSpagIta(double percentMediaMortiSpagIta) {
+		this.percentMediaMortiSpagIta = percentMediaMortiSpagIta;
+	}
+
+
+
+	public double getPercentMediaRicovSpagIta() {
+		return percentMediaRicovSpagIta;
+	}
+
+
+
+	public void setPercentMediaRicovSpagIta(double percentMediaRicovSpagIta) {
+		this.percentMediaRicovSpagIta = percentMediaRicovSpagIta;
+	}
+
+
+
+	public double getPercentDevStandCasiSpagIta() {
+		return percentDevStandCasiSpagIta;
+	}
+
+
+
+	public void setPercentDevStandCasiSpagIta(double percentDevStandCasiSpagIta) {
+		this.percentDevStandCasiSpagIta = percentDevStandCasiSpagIta;
+	}
+
+
+
+	public double getPercentDevStandMortiSpagIta() {
+		return percentDevStandMortiSpagIta;
+	}
+
+
+
+	public void setPercentDevStandMortiSpagIta(double percentDevStandMortiSpagIta) {
+		this.percentDevStandMortiSpagIta = percentDevStandMortiSpagIta;
+	}
+
+
+
+	public double getPercentDevStandRicovSpagIta() {
+		return percentDevStandRicovSpagIta;
+	}
+
+
+
+	public void setPercentDevStandRicovSpagIta(double percentDevStandRicovSpagIta) {
+		this.percentDevStandRicovSpagIta = percentDevStandRicovSpagIta;
+	}
+
+
+
+	public double getPercentMediaCasiSvizIta() {
+		return percentMediaCasiSvizIta;
+	}
+
+
+
+	public void setPercentMediaCasiSvizIta(double percentMediaCasiSvizIta) {
+		this.percentMediaCasiSvizIta = percentMediaCasiSvizIta;
+	}
+
+
+
+	public double getPercentMediaMortiSvizIta() {
+		return percentMediaMortiSvizIta;
+	}
+
+
+
+	public void setPercentMediaMortiSvizIta(double percentMediaMortiSvizIta) {
+		this.percentMediaMortiSvizIta = percentMediaMortiSvizIta;
+	}
+
+
+
+	public double getPercentMediaRicovSvizIta() {
+		return percentMediaRicovSvizIta;
+	}
+
+
+
+	public void setPercentMediaRicovSvizIta(double percentMediaRicovSvizIta) {
+		this.percentMediaRicovSvizIta = percentMediaRicovSvizIta;
+	}
+
+
+
+	public double getPercentDevStandCasiSvizIta() {
+		return percentDevStandCasiSvizIta;
+	}
+
+
+
+	public void setPercentDevStandCasiSvizIta(double percentDevStandCasiSvizIta) {
+		this.percentDevStandCasiSvizIta = percentDevStandCasiSvizIta;
+	}
+
+
+
+	public double getPercentDevStandMortiSvizIta() {
+		return percentDevStandMortiSvizIta;
+	}
+
+
+
+	public void setPercentDevStandMortiSvizIta(double percentDevStandMortiSvizIta) {
+		this.percentDevStandMortiSvizIta = percentDevStandMortiSvizIta;
+	}
+
+
+
+	public double getPercentDevStandRicovSvizIta() {
+		return percentDevStandRicovSvizIta;
+	}
+
+
+
+	public void setPercentDevStandRicovSvizIta(double percentDevStandRicovSvizIta) {
+		this.percentDevStandRicovSvizIta = percentDevStandRicovSvizIta;
+	}
+
+
+	
 	
 	
 	

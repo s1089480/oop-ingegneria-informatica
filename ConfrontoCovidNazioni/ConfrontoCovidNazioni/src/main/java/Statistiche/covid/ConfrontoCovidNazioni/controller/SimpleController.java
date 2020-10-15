@@ -70,7 +70,7 @@ public class SimpleController {
 		return Data_base.ottieniDati();
     }
 	
-	
+	//creare un unico metodo stats
 	@RequestMapping(value="/statspagna",method=RequestMethod.POST)
     public ArrayList<Statistiche> ottieniStatisticheSpagna(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni{
 		    ArrayList<Statistiche> statisticheSpagna= new ArrayList<Statistiche>();
@@ -117,6 +117,7 @@ public class SimpleController {
 		   return statisticheItalia;
 	}
 
+	
 		
 
 }

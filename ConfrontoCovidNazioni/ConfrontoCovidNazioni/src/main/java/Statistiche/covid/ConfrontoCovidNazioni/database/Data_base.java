@@ -260,24 +260,55 @@ public class Data_base  {
 		
 	}
 
-	public static void estraiStats(JSONArray jArray,ArrayList<Statistiche> stats,String data1, String data2) throws ParseException {
+	public static void estraiStats(JSONArray jArray1,JSONArray jArray2,JSONArray jArray3,ArrayList<Statistiche> stats,String data1, String data2) throws ParseException {
 		
 		stats.clear();
-		Statistiche objstats= new Statistiche();
-		objstats.setMediaNumCas(GestioneStatistiche.mediaCasi(jArray,data1,data2));
-		objstats.setMediaNumMort(GestioneStatistiche.mediaMorti(jArray,data1,data2));
-		objstats.setMediaNumRicov(GestioneStatistiche.mediaRicoverati(jArray,data1,data2));
-		objstats.setMassimoNumCas(GestioneStatistiche.massimoNumeroCasi(jArray,data1,data2));
-		objstats.setMassimoNumMort(GestioneStatistiche.massimoNumeroMorti(jArray,data1,data2));
-		objstats.setMassimoNumRicov(GestioneStatistiche.massimoNumeroRicoverati(jArray,data1,data2));
-		objstats.setDevStandCas(GestioneStatistiche.DeviazioneStandardCasi(jArray,data1,data2));
-		objstats.setDevStandMort(GestioneStatistiche.DeviazioneStandardMorti(jArray,data1,data2));
-		objstats.setDevStandRicov(GestioneStatistiche.DeviazioneStandardRicoverati(jArray,data1,data2));
+		Statistiche objstats1= new Statistiche();
+		Statistiche objstats2= new Statistiche();
+		Statistiche objstats3= new Statistiche();
 
-		stats.add(objstats);
+		objstats1.setMediaNumCas(GestioneStatistiche.mediaCasi(jArray1,data1,data2));
+		objstats1.setMediaNumMort(GestioneStatistiche.mediaMorti(jArray1,data1,data2));
+		objstats1.setMediaNumRicov(GestioneStatistiche.mediaRicoverati(jArray1,data1,data2));
+		objstats1.setMassimoNumCas(GestioneStatistiche.massimoNumeroCasi(jArray1,data1,data2));
+		objstats1.setMassimoNumMort(GestioneStatistiche.massimoNumeroMorti(jArray1,data1,data2));
+		objstats1.setMassimoNumRicov(GestioneStatistiche.massimoNumeroRicoverati(jArray1,data1,data2));
+		objstats1.setDevStandCas(GestioneStatistiche.DeviazioneStandardCasi(jArray1,data1,data2));
+		objstats1.setDevStandMort(GestioneStatistiche.DeviazioneStandardMorti(jArray1,data1,data2));
+		objstats1.setDevStandRicov(GestioneStatistiche.DeviazioneStandardRicoverati(jArray1,data1,data2));
+		
+		objstats2.setMediaNumCas(GestioneStatistiche.mediaCasi(jArray2,data1,data2));
+		objstats2.setMediaNumMort(GestioneStatistiche.mediaMorti(jArray2,data1,data2));
+		objstats2.setMediaNumRicov(GestioneStatistiche.mediaRicoverati(jArray2,data1,data2));
+		objstats2.setMassimoNumCas(GestioneStatistiche.massimoNumeroCasi(jArray2,data1,data2));
+		objstats2.setMassimoNumMort(GestioneStatistiche.massimoNumeroMorti(jArray2,data1,data2));
+		objstats2.setMassimoNumRicov(GestioneStatistiche.massimoNumeroRicoverati(jArray2,data1,data2));
+		objstats2.setDevStandCas(GestioneStatistiche.DeviazioneStandardCasi(jArray2,data1,data2));
+		objstats2.setDevStandMort(GestioneStatistiche.DeviazioneStandardMorti(jArray2,data1,data2));
+		objstats2.setDevStandRicov(GestioneStatistiche.DeviazioneStandardRicoverati(jArray2,data1,data2));
+		
+		objstats3.setMediaNumCas(GestioneStatistiche.mediaCasi(jArray3,data1,data2));
+		objstats3.setMediaNumMort(GestioneStatistiche.mediaMorti(jArray3,data1,data2));
+		objstats3.setMediaNumRicov(GestioneStatistiche.mediaRicoverati(jArray3,data1,data2));
+		objstats3.setMassimoNumCas(GestioneStatistiche.massimoNumeroCasi(jArray3,data1,data2));
+		objstats3.setMassimoNumMort(GestioneStatistiche.massimoNumeroMorti(jArray3,data1,data2));
+		objstats3.setMassimoNumRicov(GestioneStatistiche.massimoNumeroRicoverati(jArray3,data1,data2));
+		objstats3.setDevStandCas(GestioneStatistiche.DeviazioneStandardCasi(jArray3,data1,data2));
+		objstats3.setDevStandMort(GestioneStatistiche.DeviazioneStandardMorti(jArray3,data1,data2));
+		objstats3.setDevStandRicov(GestioneStatistiche.DeviazioneStandardRicoverati(jArray3,data1,data2));
+
+		
+		
+		objstats1.setPercentMediaCasiSpagSviz((objstats1.getMediaNumCas()/objstats2.getMediaNumCas())*100);
+		
+		stats.add(objstats1);
+		stats.add(objstats2);
+		stats.add(objstats3);
 
 
 	}
+	
+	
 
 }
 

@@ -227,4 +227,6 @@ for(int k=0;k<DatiPaese.size();k++) {
   
   
 } 
+  
+  //differenza percentuale: media 1 paese diviso media di un altro per 100, lo stesso deviazione standard
 }      
