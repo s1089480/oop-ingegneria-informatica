@@ -79,7 +79,6 @@ public class Data_base  {
 		try {
 			Object o1 = JSONValue.parseWithException(s);
 			objSpagna = (JSONArray)o1;
-			System.out.println("JSONArray Spagna pieno");
 			 intmap1= objSpagna;
 			
 
@@ -116,7 +115,6 @@ public class Data_base  {
 		try {
 			Object o2 = JSONValue.parseWithException(p);
 			objSvezia = (JSONArray)o2;
-			System.out.println("JSONArray Svezia pieno");
 		    intmap2=objSvezia;
 
 		} catch (org.json.simple.parser.ParseException e) {
@@ -152,7 +150,6 @@ public class Data_base  {
 		try {
 			Object o3 = JSONValue.parseWithException(q);
 			objItalia = (JSONArray)o3;
-			System.out.println("JSONArray Italia pieno");
             intmap3=objItalia;
 		} catch (org.json.simple.parser.ParseException e) {
 			// TODO Auto-generated catch block

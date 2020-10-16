@@ -46,7 +46,7 @@ public class SimpleController {
 		Data_base.convertigiornoJSON(Data_base.intmap3,Data_base.DatiItalia,giorno);
 
 		
-		}else throw new Eccezioni("il giorno dev'essere compreso tra il 2020-03-01 e il 2020-08-31");
+		}else throw new Eccezioni("il giorno dev'essere compreso tra il 2020-04-01 e il 2020-08-31");
 		return Data_base.ottieniDati();
      }
 	
@@ -74,7 +74,7 @@ public class SimpleController {
 	@RequestMapping(value="/statistiche",method=RequestMethod.POST)
     public ArrayList<Statistiche> ottieniStatisticheSvezia(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni{
 		    ArrayList<Statistiche> statistiche= new ArrayList<Statistiche>();
-		    if(((gestioneData.convertidata(from).after(gestioneData.convertidata("2020-02-29T00:00:00Z"))))
+		    if(((gestioneData.convertidata(from).after(gestioneData.convertidata("2020-03-31T00:00:00Z"))))
 					&&((gestioneData.convertidata(to).before(gestioneData.convertidata("2020-09-01T00:00:00Z")))))
 			{
 			if(gestioneData.convertidata(to).after(gestioneData.convertidata(from)))
@@ -82,7 +82,7 @@ public class SimpleController {
 			Data_base.estraiStats(Data_base.intmap1,Data_base.intmap2,Data_base.intmap3, statistiche,from,to);
 			}else throw new Eccezioni("la data 'from' deve essere antecedente rispetto alla data 'to' !!");
 			
-			}else throw new Eccezioni("inserire una data compresa tra il 2020-03-01 e il 2020-08-31 ");
+			}else throw new Eccezioni("inserire una data compresa tra il 2020-04-01 e il 2020-08-31 ");
 		   return statistiche;
 	}
 	

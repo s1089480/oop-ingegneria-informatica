@@ -24,7 +24,7 @@ public class Gestione_eccezioni implements ErrorController {
 	        			+ " ,inserire una data compresa tra il 2020-03-01 e il 2020-08-31, 'from' deve essere antecedente rispetto a 'to' ";
 	        }
 	        if(codiceErrore==400) {
-	        	message = "errore: La forma richiesta non è corretta, inserire entrambi i parametri 'from' e 'to' del tipo richiesto";
+	        	message = "errore: La forma richiesta non è corretta, inserire  i parametri nel modo richiesto";
 	        }
 	        
 	        return message;
