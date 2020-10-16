@@ -1,395 +1,449 @@
 package Statistiche.covid.ConfrontoCovidNazioni.modello;
 
-import java.text.ParseException;
 
-import org.json.simple.JSONArray;
-
-import Statistiche.covid.ConfrontoCovidNazioni.gestione.GestioneStatistiche;
 
 public class Statistiche {
 
-	private double mediaNumCas;
-	private double mediaNumMort;
-	private double mediaNumRicov;
+	private double mediaNumCasSpa;
+	private double mediaNumMortSpa;
+	private double mediaNumRicovSpa;
+	private long massimoNumCasSpa;
+	private long massimoNumMortSpa;
+	private long massimoNumRicovSpa;	
+	private double devStandCasSpa;
+	private double devStandMortSpa;
+	private double devStandRicovSpa;
+	
+	private double mediaNumCasSve;
+	private double mediaNumMortSve;
+	private double mediaNumRicovSve;
+	private long massimoNumCasSve;
+	private long massimoNumMortSve;
+	private long massimoNumRicovSve;	
+	private double devStandCasSve;
+	private double devStandMortSve;
+	private double devStandRicovSve;
+	
+	private double mediaNumCasIta;
+	private double mediaNumMortIta;
+	private double mediaNumRicovIta;
+	private long massimoNumCasIta;
+	private long massimoNumMortIta;
+	private long massimoNumRicovIta;	
+	private double devStandCasIta;
+	private double devStandMortIta;
+	private double devStandRicovIta;
+	
+	
+	
+	
 
-	private long massimoNumCas;
-	private long massimoNumMort;
-	private long massimoNumRicov;
-	
-	private double devStandCas;
-	private double devStandMort;
-	private double devStandRicov;
-	
-	private double percentMediaCasiSpagSviz;
-	private double percentMediaMortiSpagSviz;
-	private double percentMediaRicovSpagSviz;
-	private double percentDevStandCasiSpagSviz;
-	private double percentDevStandMortiSpagSviz;
-	private double percentDevStandRicovSpagSviz;
-	private double percentMediaCasiSpagIta;
-	private double percentMediaMortiSpagIta;
-	private double percentMediaRicovSpagIta;
-	private double percentDevStandCasiSpagIta;
-	private double percentDevStandMortiSpagIta;
-	private double percentDevStandRicovSpagIta;
-	private double percentMediaCasiSvizIta;
-	private double percentMediaMortiSvizIta;
-	private double percentMediaRicovSvizIta;
-	private double percentDevStandCasiSvizIta;
-	private double percentDevStandMortiSvizIta;
-	private double percentDevStandRicovSvizIta;
-	
-	
-	 	
-	
-	
-	
-	public Statistiche(double mediaNumCas, double mediaNumMort, double mediaNumRicov, long massimoNumCas,
-			long massimoNumMort, long massimoNumRicov, double devStandCas, double devStandMort, double devStandRicov,
-			double percentMediaCasiSpagSviz, double percentMediaMortiSpagSviz, double percentMediaRicovSpagSviz,
-			double percentDevStandCasiSpagSviz, double percentDevStandMortiSpagSviz,
-			double percentDevStandRicovSpagSviz, double percentMediaCasiSpagIta, double percentMediaMortiSpagIta,
-			double percentMediaRicovSpagIta, double percentDevStandCasiSpagIta, double percentDevStandMortiSpagIta,
-			double percentDevStandRicovSpagIta, double percentMediaCasiSvizIta, double percentMediaMortiSvizIta,
-			double percentMediaRicovSvizIta, double percentDevStandCasiSvizIta, double percentDevStandMortiSvizIta,
-			double percentDevStandRicovSvizIta) {
+
+
+	public Statistiche(double mediaNumCasSpa, double mediaNumMortSpa, double mediaNumRicovSpa, long massimoNumCasSpa,
+			long massimoNumMortSpa, long massimoNumRicovSpa, double devStandCasSpa, double devStandMortSpa,
+			double devStandRicovSpa, double mediaNumCasSve, double mediaNumMortSve, double mediaNumRicovSve,
+			long massimoNumCasSve, long massimoNumMortSve, long massimoNumRicovSve, double devStandCasSve,
+			double devStandMortSve, double devStandRicovSve, double mediaNumCasIta, double mediaNumMortIta,
+			double mediaNumRicovIta, long massimoNumCasIta, long massimoNumMortIta, long massimoNumRicovIta,
+			double devStandCasIta, double devStandMortIta, double devStandRicovIta) {
 		super();
-		this.mediaNumCas = mediaNumCas;
-		this.mediaNumMort = mediaNumMort;
-		this.mediaNumRicov = mediaNumRicov;
-		this.massimoNumCas = massimoNumCas;
-		this.massimoNumMort = massimoNumMort;
-		this.massimoNumRicov = massimoNumRicov;
-		this.devStandCas = devStandCas;
-		this.devStandMort = devStandMort;
-		this.devStandRicov = devStandRicov;
-		this.percentMediaCasiSpagSviz = percentMediaCasiSpagSviz;
-		this.percentMediaMortiSpagSviz = percentMediaMortiSpagSviz;
-		this.percentMediaRicovSpagSviz = percentMediaRicovSpagSviz;
-		this.percentDevStandCasiSpagSviz = percentDevStandCasiSpagSviz;
-		this.percentDevStandMortiSpagSviz = percentDevStandMortiSpagSviz;
-		this.percentDevStandRicovSpagSviz = percentDevStandRicovSpagSviz;
-		this.percentMediaCasiSpagIta = percentMediaCasiSpagIta;
-		this.percentMediaMortiSpagIta = percentMediaMortiSpagIta;
-		this.percentMediaRicovSpagIta = percentMediaRicovSpagIta;
-		this.percentDevStandCasiSpagIta = percentDevStandCasiSpagIta;
-		this.percentDevStandMortiSpagIta = percentDevStandMortiSpagIta;
-		this.percentDevStandRicovSpagIta = percentDevStandRicovSpagIta;
-		this.percentMediaCasiSvizIta = percentMediaCasiSvizIta;
-		this.percentMediaMortiSvizIta = percentMediaMortiSvizIta;
-		this.percentMediaRicovSvizIta = percentMediaRicovSvizIta;
-		this.percentDevStandCasiSvizIta = percentDevStandCasiSvizIta;
-		this.percentDevStandMortiSvizIta = percentDevStandMortiSvizIta;
-		this.percentDevStandRicovSvizIta = percentDevStandRicovSvizIta;
+		this.mediaNumCasSpa = mediaNumCasSpa;
+		this.mediaNumMortSpa = mediaNumMortSpa;
+		this.mediaNumRicovSpa = mediaNumRicovSpa;
+		this.massimoNumCasSpa = massimoNumCasSpa;
+		this.massimoNumMortSpa = massimoNumMortSpa;
+		this.massimoNumRicovSpa = massimoNumRicovSpa;
+		this.devStandCasSpa = devStandCasSpa;
+		this.devStandMortSpa = devStandMortSpa;
+		this.devStandRicovSpa = devStandRicovSpa;
+		this.mediaNumCasSve = mediaNumCasSve;
+		this.mediaNumMortSve = mediaNumMortSve;
+		this.mediaNumRicovSve = mediaNumRicovSve;
+		this.massimoNumCasSve = massimoNumCasSve;
+		this.massimoNumMortSve = massimoNumMortSve;
+		this.massimoNumRicovSve = massimoNumRicovSve;
+		this.devStandCasSve = devStandCasSve;
+		this.devStandMortSve = devStandMortSve;
+		this.devStandRicovSve = devStandRicovSve;
+		this.mediaNumCasIta = mediaNumCasIta;
+		this.mediaNumMortIta = mediaNumMortIta;
+		this.mediaNumRicovIta = mediaNumRicovIta;
+		this.massimoNumCasIta = massimoNumCasIta;
+		this.massimoNumMortIta = massimoNumMortIta;
+		this.massimoNumRicovIta = massimoNumRicovIta;
+		this.devStandCasIta = devStandCasIta;
+		this.devStandMortIta = devStandMortIta;
+		this.devStandRicovIta = devStandRicovIta;
+		
 	}
 
 
 
 	public Statistiche() {
-		this.mediaNumCas = 0;
-		this.mediaNumMort = 0;
-		this.mediaNumRicov = 0;
 		
-		this.massimoNumCas = 0;
-		this.massimoNumMort = 0;
-		this.massimoNumRicov = 0;
+		this.mediaNumCasSpa = 0;
+		this.mediaNumMortSpa = 0;
+		this.mediaNumRicovSpa = 0;
+		this.massimoNumCasSpa = 0;
+		this.massimoNumMortSpa = 0;
+		this.massimoNumRicovSpa = 0;
+		this.devStandCasSpa = 0;
+		this.devStandMortSpa = 0;
+		this.devStandRicovSpa = 0;
+		this.mediaNumCasSve = 0;
+		this.mediaNumMortSve = 0;
+		this.mediaNumRicovSve = 0;
+		this.massimoNumCasSve = 0;
+		this.massimoNumMortSve = 0;
+		this.massimoNumRicovSve = 0;
+		this.devStandCasSve = 0;
+		this.devStandMortSve = 0;
+		this.devStandRicovSve = 0;
+		this.mediaNumCasIta = 0;
+		this.mediaNumMortIta = 0;
+		this.mediaNumRicovIta = 0;
+		this.massimoNumCasIta = 0;
+		this.massimoNumMortIta = 0;
+		this.massimoNumRicovIta = 0;
+		this.devStandCasIta = 0;
+		this.devStandMortIta = 0;
+		this.devStandRicovIta = 0;
 		
-		this.devStandCas= 0;
-		this.devStandMort=0;
-		this.devStandRicov=0;
 	}
 	
   
 	
-	public double getMediaNumCas() {
-		return mediaNumCas;
-	}
+	
+	
 
-	public  void setMediaNumCas(double mediaNumCas) {
-		this.mediaNumCas = mediaNumCas;
-	}
 
-	public double getMediaNumMort() {
-		return mediaNumMort;
-	}
 
-	public void setMediaNumMort(double mediaNumMort) {
-		this.mediaNumMort = mediaNumMort;
-	}
-
-	public double getMediaNumRicov() {
-		return mediaNumRicov;
-	}
-
-	public void setMediaNumRicov(double mediaNumRicov) {
-		this.mediaNumRicov = mediaNumRicov;
+	public double getMediaNumCasSpa() {
+		return mediaNumCasSpa;
 	}
 
 
 
-	public long getMassimoNumCas() {
-		return massimoNumCas;
-	}
-
-	public void setMassimoNumCas(long massimoNumCas) {
-		this.massimoNumCas = massimoNumCas;
-	}
-
-	public long getMassimoNumMort() {
-		return massimoNumMort;
-	}
-
-	public void setMassimoNumMort(long massimoNumMort) {
-		this.massimoNumMort = massimoNumMort;
-	}
-
-	public long getMassimoNumRicov() {
-		return massimoNumRicov;
-	}
-
-	public void setMassimoNumRicov(long massimoNumRicov) {
-		this.massimoNumRicov = massimoNumRicov;
-	}
-
-	public double getDevStandCas() {
-		return devStandCas;
-	}
-
-	public void setDevStandCas(double devStandCas) {
-		this.devStandCas = devStandCas;
-	}
-
-	public double getDevStandMort() {
-		return devStandMort;
-	}
-
-	public void setDevStandMort(double devStandMort) {
-		this.devStandMort = devStandMort;
-	}
-
-	public double getDevStandRicov() {
-		return devStandRicov;
-	}
-
-	public void setDevStandRicov(double devStandRicov) {
-		this.devStandRicov = devStandRicov;
+	public void setMediaNumCasSpa(double mediaNumCasSpa) {
+		this.mediaNumCasSpa = mediaNumCasSpa;
 	}
 
 
 
-	public double getPercentMediaCasiSpagSviz() {
-		return percentMediaCasiSpagSviz;
+	public double getMediaNumMortSpa() {
+		return mediaNumMortSpa;
 	}
 
 
 
-	public void setPercentMediaCasiSpagSviz(double percentMediaCasiSpagSviz) {
-		this.percentMediaCasiSpagSviz = percentMediaCasiSpagSviz;
+	public void setMediaNumMortSpa(double mediaNumMortSpa) {
+		this.mediaNumMortSpa = mediaNumMortSpa;
 	}
 
 
 
-	public double getPercentMediaMortiSpagSviz() {
-		return percentMediaMortiSpagSviz;
+	public double getMediaNumRicovSpa() {
+		return mediaNumRicovSpa;
 	}
 
 
 
-	public void setPercentMediaMortiSpagSviz(double percentMediaMortiSpagSviz) {
-		this.percentMediaMortiSpagSviz = percentMediaMortiSpagSviz;
+	public void setMediaNumRicovSpa(double mediaNumRicovSpa) {
+		this.mediaNumRicovSpa = mediaNumRicovSpa;
 	}
 
 
 
-	public double getPercentMediaRicovSpagSviz() {
-		return percentMediaRicovSpagSviz;
+	public long getMassimoNumCasSpa() {
+		return massimoNumCasSpa;
 	}
 
 
 
-	public void setPercentMediaRicovSpagSviz(double percentMediaRicovSpagSviz) {
-		this.percentMediaRicovSpagSviz = percentMediaRicovSpagSviz;
+	public void setMassimoNumCasSpa(long massimoNumCasSpa) {
+		this.massimoNumCasSpa = massimoNumCasSpa;
 	}
 
 
 
-	public double getPercentDevStandCasiSpagSviz() {
-		return percentDevStandCasiSpagSviz;
+	public long getMassimoNumMortSpa() {
+		return massimoNumMortSpa;
 	}
 
 
 
-	public void setPercentDevStandCasiSpagSviz(double percentDevStandCasiSpagSviz) {
-		this.percentDevStandCasiSpagSviz = percentDevStandCasiSpagSviz;
+	public void setMassimoNumMortSpa(long massimoNumMortSpa) {
+		this.massimoNumMortSpa = massimoNumMortSpa;
 	}
 
 
 
-	public double getPercentDevStandMortiSpagSviz() {
-		return percentDevStandMortiSpagSviz;
+	public long getMassimoNumRicovSpa() {
+		return massimoNumRicovSpa;
 	}
 
 
 
-	public void setPercentDevStandMortiSpagSviz(double percentDevStandMortiSpagSviz) {
-		this.percentDevStandMortiSpagSviz = percentDevStandMortiSpagSviz;
+	public void setMassimoNumRicovSpa(long massimoNumRicovSpa) {
+		this.massimoNumRicovSpa = massimoNumRicovSpa;
 	}
 
 
 
-	public double getPercentDevStandRicovSpagSviz() {
-		return percentDevStandRicovSpagSviz;
+	public double getDevStandCasSpa() {
+		return devStandCasSpa;
 	}
 
 
 
-	public void setPercentDevStandRicovSpagSviz(double percentDevStandRicovSpagSviz) {
-		this.percentDevStandRicovSpagSviz = percentDevStandRicovSpagSviz;
+	public void setDevStandCasSpa(double devStandCasSpa) {
+		this.devStandCasSpa = devStandCasSpa;
 	}
 
 
 
-	public double getPercentMediaCasiSpagIta() {
-		return percentMediaCasiSpagIta;
+	public double getDevStandMortSpa() {
+		return devStandMortSpa;
 	}
 
 
 
-	public void setPercentMediaCasiSpagIta(double percentMediaCasiSpagIta) {
-		this.percentMediaCasiSpagIta = percentMediaCasiSpagIta;
+	public void setDevStandMortSpa(double devStandMortSpa) {
+		this.devStandMortSpa = devStandMortSpa;
 	}
 
 
 
-	public double getPercentMediaMortiSpagIta() {
-		return percentMediaMortiSpagIta;
+	public double getDevStandRicovSpa() {
+		return devStandRicovSpa;
 	}
 
 
 
-	public void setPercentMediaMortiSpagIta(double percentMediaMortiSpagIta) {
-		this.percentMediaMortiSpagIta = percentMediaMortiSpagIta;
+	public void setDevStandRicovSpa(double devStandRicovSpa) {
+		this.devStandRicovSpa = devStandRicovSpa;
 	}
 
 
 
-	public double getPercentMediaRicovSpagIta() {
-		return percentMediaRicovSpagIta;
+	public double getMediaNumCasSve() {
+		return mediaNumCasSve;
 	}
 
 
 
-	public void setPercentMediaRicovSpagIta(double percentMediaRicovSpagIta) {
-		this.percentMediaRicovSpagIta = percentMediaRicovSpagIta;
+	public void setMediaNumCasSve(double mediaNumCasSve) {
+		this.mediaNumCasSve = mediaNumCasSve;
 	}
 
 
 
-	public double getPercentDevStandCasiSpagIta() {
-		return percentDevStandCasiSpagIta;
+	public double getMediaNumMortSve() {
+		return mediaNumMortSve;
 	}
 
 
 
-	public void setPercentDevStandCasiSpagIta(double percentDevStandCasiSpagIta) {
-		this.percentDevStandCasiSpagIta = percentDevStandCasiSpagIta;
+	public void setMediaNumMortSve(double mediaNumMortSve) {
+		this.mediaNumMortSve = mediaNumMortSve;
 	}
 
 
 
-	public double getPercentDevStandMortiSpagIta() {
-		return percentDevStandMortiSpagIta;
+	public double getMediaNumRicovSve() {
+		return mediaNumRicovSve;
 	}
 
 
 
-	public void setPercentDevStandMortiSpagIta(double percentDevStandMortiSpagIta) {
-		this.percentDevStandMortiSpagIta = percentDevStandMortiSpagIta;
+	public void setMediaNumRicovSve(double mediaNumRicovSve) {
+		this.mediaNumRicovSve = mediaNumRicovSve;
 	}
 
 
 
-	public double getPercentDevStandRicovSpagIta() {
-		return percentDevStandRicovSpagIta;
+	public long getMassimoNumCasSve() {
+		return massimoNumCasSve;
 	}
 
 
 
-	public void setPercentDevStandRicovSpagIta(double percentDevStandRicovSpagIta) {
-		this.percentDevStandRicovSpagIta = percentDevStandRicovSpagIta;
+	public void setMassimoNumCasSve(long massimoNumCasSve) {
+		this.massimoNumCasSve = massimoNumCasSve;
 	}
 
 
 
-	public double getPercentMediaCasiSvizIta() {
-		return percentMediaCasiSvizIta;
+	public long getMassimoNumMortSve() {
+		return massimoNumMortSve;
 	}
 
 
 
-	public void setPercentMediaCasiSvizIta(double percentMediaCasiSvizIta) {
-		this.percentMediaCasiSvizIta = percentMediaCasiSvizIta;
+	public void setMassimoNumMortSve(long massimoNumMortSve) {
+		this.massimoNumMortSve = massimoNumMortSve;
 	}
 
 
 
-	public double getPercentMediaMortiSvizIta() {
-		return percentMediaMortiSvizIta;
+	public long getMassimoNumRicovSve() {
+		return massimoNumRicovSve;
 	}
 
 
 
-	public void setPercentMediaMortiSvizIta(double percentMediaMortiSvizIta) {
-		this.percentMediaMortiSvizIta = percentMediaMortiSvizIta;
+	public void setMassimoNumRicovSve(long massimoNumRicovSve) {
+		this.massimoNumRicovSve = massimoNumRicovSve;
 	}
 
 
 
-	public double getPercentMediaRicovSvizIta() {
-		return percentMediaRicovSvizIta;
+	public double getDevStandCasSve() {
+		return devStandCasSve;
 	}
 
 
 
-	public void setPercentMediaRicovSvizIta(double percentMediaRicovSvizIta) {
-		this.percentMediaRicovSvizIta = percentMediaRicovSvizIta;
+	public void setDevStandCasSve(double devStandCasSve) {
+		this.devStandCasSve = devStandCasSve;
 	}
 
 
 
-	public double getPercentDevStandCasiSvizIta() {
-		return percentDevStandCasiSvizIta;
+	public double getDevStandMortSve() {
+		return devStandMortSve;
 	}
 
 
 
-	public void setPercentDevStandCasiSvizIta(double percentDevStandCasiSvizIta) {
-		this.percentDevStandCasiSvizIta = percentDevStandCasiSvizIta;
+	public void setDevStandMortSve(double devStandMortSve) {
+		this.devStandMortSve = devStandMortSve;
 	}
 
 
 
-	public double getPercentDevStandMortiSvizIta() {
-		return percentDevStandMortiSvizIta;
+	public double getDevStandRicovSve() {
+		return devStandRicovSve;
 	}
 
 
 
-	public void setPercentDevStandMortiSvizIta(double percentDevStandMortiSvizIta) {
-		this.percentDevStandMortiSvizIta = percentDevStandMortiSvizIta;
+	public void setDevStandRicovSve(double devStandRicovSve) {
+		this.devStandRicovSve = devStandRicovSve;
 	}
 
 
 
-	public double getPercentDevStandRicovSvizIta() {
-		return percentDevStandRicovSvizIta;
+	public double getMediaNumCasIta() {
+		return mediaNumCasIta;
 	}
 
 
 
-	public void setPercentDevStandRicovSvizIta(double percentDevStandRicovSvizIta) {
-		this.percentDevStandRicovSvizIta = percentDevStandRicovSvizIta;
+	public void setMediaNumCasIta(double mediaNumCasIta) {
+		this.mediaNumCasIta = mediaNumCasIta;
 	}
+
+
+
+	public double getMediaNumMortIta() {
+		return mediaNumMortIta;
+	}
+
+
+
+	public void setMediaNumMortIta(double mediaNumMortIta) {
+		this.mediaNumMortIta = mediaNumMortIta;
+	}
+
+
+
+	public double getMediaNumRicovIta() {
+		return mediaNumRicovIta;
+	}
+
+
+
+	public void setMediaNumRicovIta(double mediaNumRicovIta) {
+		this.mediaNumRicovIta = mediaNumRicovIta;
+	}
+
+
+
+	public long getMassimoNumCasIta() {
+		return massimoNumCasIta;
+	}
+
+
+
+	public void setMassimoNumCasIta(long massimoNumCasIta) {
+		this.massimoNumCasIta = massimoNumCasIta;
+	}
+
+
+
+	public long getMassimoNumMortIta() {
+		return massimoNumMortIta;
+	}
+
+
+
+	public void setMassimoNumMortIta(long massimoNumMortIta) {
+		this.massimoNumMortIta = massimoNumMortIta;
+	}
+
+
+
+	public long getMassimoNumRicovIta() {
+		return massimoNumRicovIta;
+	}
+
+
+
+	public void setMassimoNumRicovIta(long massimoNumRicovIta) {
+		this.massimoNumRicovIta = massimoNumRicovIta;
+	}
+
+
+
+	public double getDevStandCasIta() {
+		return devStandCasIta;
+	}
+
+
+
+	public void setDevStandCasIta(double devStandCasIta) {
+		this.devStandCasIta = devStandCasIta;
+	}
+
+
+
+	public double getDevStandMortIta() {
+		return devStandMortIta;
+	}
+
+
+
+	public void setDevStandMortIta(double devStandMortIta) {
+		this.devStandMortIta = devStandMortIta;
+	}
+
+
+
+	public double getDevStandRicovIta() {
+		return devStandRicovIta;
+	}
+
+
+
+	public void setDevStandRicovIta(double devStandRicovIta) {
+		this.devStandRicovIta = devStandRicovIta;
+	}
+
+
+
+	
 
 
 	

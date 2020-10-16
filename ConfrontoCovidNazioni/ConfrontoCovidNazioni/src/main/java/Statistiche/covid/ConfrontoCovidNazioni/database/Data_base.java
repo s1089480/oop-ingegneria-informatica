@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Value;
 
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Dati;
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Metadati;
+import Statistiche.covid.ConfrontoCovidNazioni.modello.StatConfronto;
 import Statistiche.covid.ConfrontoCovidNazioni.modello.Statistiche;
 import Statistiche.covid.ConfrontoCovidNazioni.gestione.gestioneData;
 import Statistiche.covid.ConfrontoCovidNazioni.gestione.GestioneStatistiche;
@@ -58,7 +59,7 @@ public class Data_base  {
 
 
 
-		URL spagnaURL = new URL("https://api.covid19api.com/country/spain?from=2020-03-01T00:00:00Z&to=2020-03-31T00:00:00Z");
+		URL spagnaURL = new URL("https://api.covid19api.com/country/spain?from=2020-04-01T00:00:00Z&to=2020-08-31T00:00:00Z");
 		URLConnection URLConnsp= spagnaURL.openConnection();
 		InputStream input1=URLConnsp.getInputStream();
 
@@ -78,7 +79,7 @@ public class Data_base  {
 		try {
 			Object o1 = JSONValue.parseWithException(s);
 			objSpagna = (JSONArray)o1;
-			System.out.println("JsonArray Spagna pieno");
+			System.out.println("JSONArray Spagna pieno");
 			 intmap1= objSpagna;
 			
 
@@ -100,7 +101,7 @@ public class Data_base  {
 
 
 
-		URL sveziaURL = new URL("https://api.covid19api.com/country/sweden?from=2020-03-01T00:00:00Z&to=2020-03-31T00:00:00Z");
+		URL sveziaURL = new URL("https://api.covid19api.com/country/sweden?from=2020-04-01T00:00:00Z&to=2020-08-31T00:00:00Z");
 		URLConnection URLConnsv= sveziaURL.openConnection();
 		InputStream input2=URLConnsv.getInputStream();
 
@@ -135,7 +136,7 @@ public class Data_base  {
 		FileOutputStream Fitalia=new FileOutputStream(Italia);
 
 
-		URL italiaURL = new URL("https://api.covid19api.com/country/italy?from=2020-03-01T00:00:00Z&to=2020-03-31T00:00:00Z");
+		URL italiaURL = new URL("https://api.covid19api.com/country/italy?from=2020-04-01T00:00:00Z&to=2020-08-31T00:00:00Z");
 		URLConnection URLConnit= italiaURL.openConnection();
 		InputStream input3=URLConnit.getInputStream();
 
@@ -260,54 +261,112 @@ public class Data_base  {
 		
 	}
 
+	public static void estraiConfrontoStats(JSONArray jArray1,JSONArray jArray2,JSONArray jArray3,ArrayList<StatConfronto> statConfr,String data1, String data2) throws ParseException {
+		
+		statConfr.clear();
+		
+		
+		Statistiche objstats1= new Statistiche();
+		Statistiche objstats2= new Statistiche();
+		Statistiche objstats3= new Statistiche();
+		StatConfronto objconfronto1=new StatConfronto();
+		
+
+
+		objstats1.setMediaNumCasSpa(GestioneStatistiche.mediaCasi(jArray1,data1,data2));
+		objstats1.setMediaNumMortSpa(GestioneStatistiche.mediaMorti(jArray1,data1,data2));
+		objstats1.setMediaNumRicovSpa(GestioneStatistiche.mediaRicoverati(jArray1,data1,data2));
+		objstats1.setMassimoNumCasSpa(GestioneStatistiche.massimoNumeroCasi(jArray1,data1,data2));
+		objstats1.setMassimoNumMortSpa(GestioneStatistiche.massimoNumeroMorti(jArray1,data1,data2));
+		objstats1.setMassimoNumRicovSpa(GestioneStatistiche.massimoNumeroRicoverati(jArray1,data1,data2));
+		objstats1.setDevStandCasSpa(GestioneStatistiche.DeviazioneStandardCasi(jArray1,data1,data2));
+		objstats1.setDevStandMortSpa(GestioneStatistiche.DeviazioneStandardMorti(jArray1,data1,data2));
+		objstats1.setDevStandRicovSpa(GestioneStatistiche.DeviazioneStandardRicoverati(jArray1,data1,data2));
+		
+		objstats2.setMediaNumCasSve(GestioneStatistiche.mediaCasi(jArray2,data1,data2));
+		objstats2.setMediaNumMortSve(GestioneStatistiche.mediaMorti(jArray2,data1,data2));
+		objstats2.setMediaNumRicovSve(GestioneStatistiche.mediaRicoverati(jArray2,data1,data2));
+		objstats2.setMassimoNumCasSve(GestioneStatistiche.massimoNumeroCasi(jArray2,data1,data2));
+		objstats2.setMassimoNumMortSve(GestioneStatistiche.massimoNumeroMorti(jArray2,data1,data2));
+		objstats2.setMassimoNumRicovSve(GestioneStatistiche.massimoNumeroRicoverati(jArray2,data1,data2));
+		objstats2.setDevStandCasSve(GestioneStatistiche.DeviazioneStandardCasi(jArray2,data1,data2));
+		objstats2.setDevStandMortSve(GestioneStatistiche.DeviazioneStandardMorti(jArray2,data1,data2));
+		objstats2.setDevStandRicovSve(GestioneStatistiche.DeviazioneStandardRicoverati(jArray2,data1,data2));
+		
+		objstats3.setMediaNumCasIta(GestioneStatistiche.mediaCasi(jArray3,data1,data2));
+		objstats3.setMediaNumMortIta(GestioneStatistiche.mediaMorti(jArray3,data1,data2));
+		objstats3.setMediaNumRicovIta(GestioneStatistiche.mediaRicoverati(jArray3,data1,data2));
+		objstats3.setMassimoNumCasIta(GestioneStatistiche.massimoNumeroCasi(jArray3,data1,data2));
+		objstats3.setMassimoNumMortIta(GestioneStatistiche.massimoNumeroMorti(jArray3,data1,data2));
+		objstats3.setMassimoNumRicovIta(GestioneStatistiche.massimoNumeroRicoverati(jArray3,data1,data2));
+		objstats3.setDevStandCasIta(GestioneStatistiche.DeviazioneStandardCasi(jArray3,data1,data2));
+		objstats3.setDevStandMortIta(GestioneStatistiche.DeviazioneStandardMorti(jArray3,data1,data2));
+		objstats3.setDevStandRicovIta(GestioneStatistiche.DeviazioneStandardRicoverati(jArray3,data1,data2));
+
+		
+		
+		objconfronto1.setPercentMediaCasiSpagSve((objstats1.getMediaNumCasSpa()/objstats2.getMediaNumCasSve())*100);
+		objconfronto1.setPercentMediaMortiSpagSve((objstats1.getMediaNumMortSpa()/objstats2.getMediaNumMortSve())*100);
+		objconfronto1.setPercentDevStandCasiSpagSve((objstats1.getDevStandCasSpa()/objstats2.getDevStandCasSve())*100);
+		objconfronto1.setPercentDevStandMortiSpagSve((objstats1.getDevStandMortSpa()/objstats2.getDevStandMortSve())*100);
+		
+		objconfronto1.setPercentMediaCasiSveIta((objstats2.getMediaNumCasSve()/objstats3.getMediaNumCasIta())*100);
+		objconfronto1.setPercentMediaMortiSveIta((objstats2.getMediaNumMortSve()/objstats3.getMediaNumMortIta())*100);
+		objconfronto1.setPercentDevStandCasiSveIta((objstats2.getDevStandCasSve()/objstats3.getDevStandCasIta())*100);
+		objconfronto1.setPercentDevStandMortiSveIta((objstats2.getDevStandMortSve()/objstats3.getDevStandMortIta())*100);
+		
+		objconfronto1.setPercentMediaCasiItaSpag((objstats3.getMediaNumCasIta()/objstats1.getMediaNumCasSpa())*100);
+		objconfronto1.setPercentMediaMortiItaSpag((objstats3.getMediaNumMortIta()/objstats1.getMediaNumMortSpa())*100);
+		objconfronto1.setPercentDevStandCasiItaSpag((objstats3.getDevStandCasIta()/objstats1.getDevStandCasSpa())*100);
+		objconfronto1.setPercentDevStandMortiItaSpag((objstats3.getDevStandMortIta()/objstats1.getDevStandMortSpa())*100);
+		
+	
+		
+		statConfr.add(objconfronto1);
+		
+		
+
+	}
+	
+	
 	public static void estraiStats(JSONArray jArray1,JSONArray jArray2,JSONArray jArray3,ArrayList<Statistiche> stats,String data1, String data2) throws ParseException {
 		
 		stats.clear();
 		Statistiche objstats1= new Statistiche();
-		Statistiche objstats2= new Statistiche();
-		Statistiche objstats3= new Statistiche();
-
-		objstats1.setMediaNumCas(GestioneStatistiche.mediaCasi(jArray1,data1,data2));
-		objstats1.setMediaNumMort(GestioneStatistiche.mediaMorti(jArray1,data1,data2));
-		objstats1.setMediaNumRicov(GestioneStatistiche.mediaRicoverati(jArray1,data1,data2));
-		objstats1.setMassimoNumCas(GestioneStatistiche.massimoNumeroCasi(jArray1,data1,data2));
-		objstats1.setMassimoNumMort(GestioneStatistiche.massimoNumeroMorti(jArray1,data1,data2));
-		objstats1.setMassimoNumRicov(GestioneStatistiche.massimoNumeroRicoverati(jArray1,data1,data2));
-		objstats1.setDevStandCas(GestioneStatistiche.DeviazioneStandardCasi(jArray1,data1,data2));
-		objstats1.setDevStandMort(GestioneStatistiche.DeviazioneStandardMorti(jArray1,data1,data2));
-		objstats1.setDevStandRicov(GestioneStatistiche.DeviazioneStandardRicoverati(jArray1,data1,data2));
-		
-		objstats2.setMediaNumCas(GestioneStatistiche.mediaCasi(jArray2,data1,data2));
-		objstats2.setMediaNumMort(GestioneStatistiche.mediaMorti(jArray2,data1,data2));
-		objstats2.setMediaNumRicov(GestioneStatistiche.mediaRicoverati(jArray2,data1,data2));
-		objstats2.setMassimoNumCas(GestioneStatistiche.massimoNumeroCasi(jArray2,data1,data2));
-		objstats2.setMassimoNumMort(GestioneStatistiche.massimoNumeroMorti(jArray2,data1,data2));
-		objstats2.setMassimoNumRicov(GestioneStatistiche.massimoNumeroRicoverati(jArray2,data1,data2));
-		objstats2.setDevStandCas(GestioneStatistiche.DeviazioneStandardCasi(jArray2,data1,data2));
-		objstats2.setDevStandMort(GestioneStatistiche.DeviazioneStandardMorti(jArray2,data1,data2));
-		objstats2.setDevStandRicov(GestioneStatistiche.DeviazioneStandardRicoverati(jArray2,data1,data2));
-		
-		objstats3.setMediaNumCas(GestioneStatistiche.mediaCasi(jArray3,data1,data2));
-		objstats3.setMediaNumMort(GestioneStatistiche.mediaMorti(jArray3,data1,data2));
-		objstats3.setMediaNumRicov(GestioneStatistiche.mediaRicoverati(jArray3,data1,data2));
-		objstats3.setMassimoNumCas(GestioneStatistiche.massimoNumeroCasi(jArray3,data1,data2));
-		objstats3.setMassimoNumMort(GestioneStatistiche.massimoNumeroMorti(jArray3,data1,data2));
-		objstats3.setMassimoNumRicov(GestioneStatistiche.massimoNumeroRicoverati(jArray3,data1,data2));
-		objstats3.setDevStandCas(GestioneStatistiche.DeviazioneStandardCasi(jArray3,data1,data2));
-		objstats3.setDevStandMort(GestioneStatistiche.DeviazioneStandardMorti(jArray3,data1,data2));
-		objstats3.setDevStandRicov(GestioneStatistiche.DeviazioneStandardRicoverati(jArray3,data1,data2));
-
 		
 		
-		objstats1.setPercentMediaCasiSpagSviz((objstats1.getMediaNumCas()/objstats2.getMediaNumCas())*100);
+		objstats1.setMediaNumCasSpa(GestioneStatistiche.mediaCasi(jArray1,data1,data2));
+		objstats1.setMediaNumMortSpa(GestioneStatistiche.mediaMorti(jArray1,data1,data2));
+		objstats1.setMediaNumRicovSpa(GestioneStatistiche.mediaRicoverati(jArray1,data1,data2));
+		objstats1.setMassimoNumCasSpa(GestioneStatistiche.massimoNumeroCasi(jArray1,data1,data2));
+		objstats1.setMassimoNumMortSpa(GestioneStatistiche.massimoNumeroMorti(jArray1,data1,data2));
+		objstats1.setMassimoNumRicovSpa(GestioneStatistiche.massimoNumeroRicoverati(jArray1,data1,data2));
+		objstats1.setDevStandCasSpa(GestioneStatistiche.DeviazioneStandardCasi(jArray1,data1,data2));
+		objstats1.setDevStandMortSpa(GestioneStatistiche.DeviazioneStandardMorti(jArray1,data1,data2));
+		objstats1.setDevStandRicovSpa(GestioneStatistiche.DeviazioneStandardRicoverati(jArray1,data1,data2));
 		
-		stats.add(objstats1);
-		stats.add(objstats2);
-		stats.add(objstats3);
-
-
-	}
+		objstats1.setMediaNumCasSve(GestioneStatistiche.mediaCasi(jArray2,data1,data2));
+		objstats1.setMediaNumMortSve(GestioneStatistiche.mediaMorti(jArray2,data1,data2));
+		objstats1.setMediaNumRicovSve(GestioneStatistiche.mediaRicoverati(jArray2,data1,data2));
+		objstats1.setMassimoNumCasSve(GestioneStatistiche.massimoNumeroCasi(jArray2,data1,data2));
+		objstats1.setMassimoNumMortSve(GestioneStatistiche.massimoNumeroMorti(jArray2,data1,data2));
+		objstats1.setMassimoNumRicovSve(GestioneStatistiche.massimoNumeroRicoverati(jArray2,data1,data2));
+		objstats1.setDevStandCasSve(GestioneStatistiche.DeviazioneStandardCasi(jArray2,data1,data2));
+		objstats1.setDevStandMortSve(GestioneStatistiche.DeviazioneStandardMorti(jArray2,data1,data2));
+		objstats1.setDevStandRicovSve(GestioneStatistiche.DeviazioneStandardRicoverati(jArray2,data1,data2));
+		
+		objstats1.setMediaNumCasIta(GestioneStatistiche.mediaCasi(jArray3,data1,data2));
+		objstats1.setMediaNumMortIta(GestioneStatistiche.mediaMorti(jArray3,data1,data2));
+		objstats1.setMediaNumRicovIta(GestioneStatistiche.mediaRicoverati(jArray3,data1,data2));
+		objstats1.setMassimoNumCasIta(GestioneStatistiche.massimoNumeroCasi(jArray3,data1,data2));
+		objstats1.setMassimoNumMortIta(GestioneStatistiche.massimoNumeroMorti(jArray3,data1,data2));
+		objstats1.setMassimoNumRicovIta(GestioneStatistiche.massimoNumeroRicoverati(jArray3,data1,data2));
+		objstats1.setDevStandCasIta(GestioneStatistiche.DeviazioneStandardCasi(jArray3,data1,data2));
+		objstats1.setDevStandMortIta(GestioneStatistiche.DeviazioneStandardMorti(jArray3,data1,data2));
+		objstats1.setDevStandRicovIta(GestioneStatistiche.DeviazioneStandardRicoverati(jArray3,data1,data2));
 	
+		stats.add(objstats1);
+	}
 	
 
 }
