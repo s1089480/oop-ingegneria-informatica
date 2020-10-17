@@ -1,7 +1,11 @@
 package Statistiche.covid.ConfrontoCovidNazioni.modello;
 
 
-
+/**
+ * Classe con le statistiche dei singoli paesi
+ * @author Marco Cervigni
+ *
+ */
 public class Statistiche {
 
 	private double mediaNumCasSpa;

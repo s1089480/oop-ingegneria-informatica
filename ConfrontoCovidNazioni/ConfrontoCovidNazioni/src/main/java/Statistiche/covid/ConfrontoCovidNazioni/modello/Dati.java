@@ -4,8 +4,8 @@ package Statistiche.covid.ConfrontoCovidNazioni.modello;
 
 
 /**
- * 
- * @author cervoz
+ * Rappresenta la classe con i Dati dei vari paesi
+ * @author Marco Cervigni
  * 
  *
  */

@@ -1,5 +1,10 @@
 package Statistiche.covid.ConfrontoCovidNazioni.modello;
 
+/**
+ * Rappresenta la classe con i metadati dei vari paesi(nome colonna, alias e tipo di dato)
+ * @author Marco Cervigni
+ *
+ */
 public class Metadati {
 	String alias;
 	String sourceField;

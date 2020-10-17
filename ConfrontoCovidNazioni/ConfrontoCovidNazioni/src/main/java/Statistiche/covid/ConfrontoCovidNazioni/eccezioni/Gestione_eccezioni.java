@@ -7,10 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+/**
+ * Questa classe consente di gestire le varie eccezioni che si possono generare
+ * @author Marco Cervigni
+ *
+ */
 @Controller
 public class Gestione_eccezioni implements ErrorController {
-	
+	/**
+	 * 
+	 * @param request Rappresenta la richiesta dal server http da gestire
+	 * @return una stringa che descrive l'eccezione
+	 */
 	 @RequestMapping("/error")
 	    @ResponseBody
 	    public String gestisciErrori(HttpServletRequest request){

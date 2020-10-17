@@ -30,6 +30,11 @@ import java.net.URL;
 
 
 
+/**
+ * Classe che gestisce la memoria, viene richiamata dall'applicazione springboot
+ * @author Marco Cervigni
+ *
+ */
 public class Data_base  {
 
 	private static ArrayList<Metadati> metadati = new ArrayList<Metadati>();
@@ -43,6 +48,11 @@ public class Data_base  {
 	static String p="";
 	static String q="";
 	
+	/**
+	 * Preleva l'URL per il download di dati in formato JSON e inizializza
+	 * i 3 JSONArray dei 3 paesi
+	 * @throws IOException
+	 */
 	
 	public static void Scaricadati() throws IOException
 	{
@@ -50,7 +60,7 @@ public class Data_base  {
 		int b=0;
 		int c=0;
 		/**
-		 * file contenente contagiati,ricoveri,morti in spagna nel mese di marzo
+		 * file contenente contagiati,ricoveri,morti in Spagna 
 		 */
 
 		File spagna = new File("Spagna.json");
@@ -92,7 +102,7 @@ public class Data_base  {
 		Fspagna.close();
 
 		/**
-		 * file contenente contagiati,ricoveri,morti in svezia nel mese di marzo
+		 * file contenente contagiati,ricoveri,morti in Svezia
 		 */
 
 		File svezia = new File("Svezia.json");
@@ -127,7 +137,7 @@ public class Data_base  {
 		Fsvezia.close();
 
 		/**
-		 * file contenente contagiati,ricoveri,morti in italia nel mese di marzo
+		 * file contenente contagiati,ricoveri,morti in Italia
 		 */
 
 		File Italia = new File("Italia.json");
@@ -163,7 +173,10 @@ public class Data_base  {
 	}
 
 
-
+/**
+ *Organizza i 3 ArrayList di dati in un unico Arraylist 
+ * @return Arraylist di Arraylist con i dati di tutti e 3 i paesi
+ */
 
 
 	public static ArrayList<ArrayList<Dati>> ottieniDati() {
@@ -178,7 +191,10 @@ public class Data_base  {
 	
 	
 		
-
+/**
+ * Riempie l'arraylist di metadati e lo restituisce
+ * @return ArrayList di metadati
+ */
 	public static ArrayList<Metadati> ottieniArrayMetadati() {
 
 		metadati.add(new Metadati("NomNaz","Nome nazione","String"));
@@ -196,7 +212,14 @@ public class Data_base  {
 		return metadati;
 	}	
 	
-	
+	/**
+	 * Converte il JSONArray in ArrayList di dati in un periodo compreso tra 2 date prese in ingresso
+	 * @param json = JSONArray da convertire
+	 * @param lista = ArrayList di dati 
+	 * @param datainizio = Data a partire dalla quale vengono convertiti i dati
+	 * @param datafine = Data fino alla quale vengono convertiti i dati
+	 * @throws ParseException se il metodo riceve una data non in formato corretto 
+	 */
 	public static void convertiJSON (JSONArray json, ArrayList<Dati> lista,String datainizio,String datafine) throws ParseException {
 		lista.clear();
 		for(int i = 0; i < json.size(); i++) {
@@ -226,7 +249,13 @@ public class Data_base  {
 			}
 		}
 }
-	
+	/**
+	 * Converte il JSONArray in ArrayList di dati per un singolo giorno
+	 * @param json = JSONArray da convertire
+	 * @param arraydati= ArrayList di dati
+	 * @param data = giorno per il quale viene effettuata la conversione
+	 * @throws ParseException se il metodo riceve una data non in formato corretto
+	 */
 	public static void convertigiornoJSON(JSONArray json, ArrayList<Dati> arraydati,String data) throws ParseException {
 		
 		arraydati.clear();
@@ -257,7 +286,17 @@ public class Data_base  {
 		}
 		
 	}
-
+/**
+ *  Metodo che riempie un arraylist<StatConfronto> con le statistiche che permettono di
+ *  confrontare l'impatto del covid nei 3 paesi
+ * @param jArray1 = JsonArray del primo paese
+ * @param jArray2 = JsonArray del secondo paese
+ * @param jArray3 = JsonArray del terzo paese
+ * @param statConfr = ArrayList con le statistiche
+ * @param data1= data a partire dalla quale vengono prelevate le statistiche
+ * @param data2= data fino alla quale vengono prelevate le statistiche
+ * @throws ParseException se il metodo riceve una data non in formato corretto
+ */
 	public static void estraiConfrontoStats(JSONArray jArray1,JSONArray jArray2,JSONArray jArray3,ArrayList<StatConfronto> statConfr,String data1, String data2) throws ParseException {
 		
 		statConfr.clear();
@@ -325,7 +364,16 @@ public class Data_base  {
 
 	}
 	
-	
+	/**
+	 * Metodo che riempie un ArrayList<Statistiche> con le statistiche dei 3 paesi presi in considerazione
+	 * @param jArray1 = JsonArray del primo paese
+	 * @param jArray2 = JsonArray del secondo paese
+	 * @param jArray3 = JsonArray del terzo paese
+	 * @param stats = ArrayList con le statistiche
+	 * @param data1= data a partire dalla quale vengono prelevate le statistiche
+	 * @param data2= data fino alla quale vengono prelevate le statistiche
+	 * @throws ParseException se il metodo riceve una data non in formato corretto
+	 */
 	public static void estraiStats(JSONArray jArray1,JSONArray jArray2,JSONArray jArray3,ArrayList<Statistiche> stats,String data1, String data2) throws ParseException {
 		
 		stats.clear();

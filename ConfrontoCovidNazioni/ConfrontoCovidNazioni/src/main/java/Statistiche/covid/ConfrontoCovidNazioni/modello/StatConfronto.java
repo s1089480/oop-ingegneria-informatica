@@ -1,5 +1,10 @@
 package Statistiche.covid.ConfrontoCovidNazioni.modello;
 
+/**
+ * Classe con le statistiche che permettono di confrontare i 3 paesi
+ * @author Marco Cervigni
+ *
+ */
 public class StatConfronto {
 
 	
