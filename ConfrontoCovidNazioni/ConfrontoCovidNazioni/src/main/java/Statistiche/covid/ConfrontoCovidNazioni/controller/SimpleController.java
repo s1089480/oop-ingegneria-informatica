@@ -103,7 +103,7 @@ public class SimpleController {
 	 * 
 	 */
 	@RequestMapping(value="/statistiche",method=RequestMethod.POST)
-    public ArrayList<Statistiche> ottieniStatisticheSvezia(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni{
+    public ArrayList<Statistiche> ottieniStatistiche(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni{
 		    ArrayList<Statistiche> statistiche= new ArrayList<Statistiche>();
 		    if(((gestioneData.convertidata(from).after(gestioneData.convertidata("2020-03-31T00:00:00Z"))))
 					&&((gestioneData.convertidata(to).before(gestioneData.convertidata("2020-09-01T00:00:00Z")))))
@@ -128,7 +128,7 @@ public class SimpleController {
 	 * 
 	 */
 	@RequestMapping(value="/confrontoStat",method=RequestMethod.POST)
-    public ArrayList<StatConfronto> ottieniStatisticheSpagna(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni{
+    public ArrayList<StatConfronto> ottieniStatisticheConfronto(@RequestParam(name="from") String from, @RequestParam(name="to") String to) throws ParseException, Eccezioni{
 		    ArrayList<StatConfronto> confrontoStatistiche= new ArrayList<StatConfronto>();
 		    if(((gestioneData.convertidata(from).after(gestioneData.convertidata("2020-03-31T00:00:00Z"))))
 					&&((gestioneData.convertidata(to).before(gestioneData.convertidata("2020-09-01T00:00:00Z")))))
