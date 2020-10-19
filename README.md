@@ -14,6 +14,9 @@ POST|/confrontoStat|Fornisce le statistiche che consentono di confrontare l'anda
 
 Per selezionare un giorno bisogna inserire come parametro(__key__) '__giorno__' e come valore (__value__) 
 una data nel formato __AAAA-MM-GGT00:00:00Z__ ad esempio 2020-04-01T00:00:00Z.
+## DIAGRAMMA DEI CASI D'USO
+.
+!<a href="https://imgbb.com/"><img src="https://i.ibb.co/Tgbt90Q/use-Case-Diag.png" alt="use-Case-Diag" border="0"></a>
 
 ## DIAGRAMMA DELLE CLASSI
 
