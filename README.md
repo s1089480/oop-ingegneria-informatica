@@ -15,6 +15,19 @@ POST|/confrontoStat|Fornisce le statistiche che consentono di confrontare l'anda
 Per selezionare un giorno bisogna inserire come parametro(__key__) '__giorno__' e come valore (__value__) 
 una data nel formato __AAAA-MM-GGT00:00:00Z__ ad esempio 2020-04-01T00:00:00Z.
 
-##DIAGRAMMA DEI CASI D'USO
+## DIAGRAMMA DELLE CLASSI
 
-!<a href="https://imgbb.com/"><img src="https://i.ibb.co/Tgbt90Q/use-Case-Diag.png" alt="use-Case-Diag" border="0"></a>
+!<a href="https://ibb.co/V2Rs4DV"><img src="https://i.ibb.co/2gxT4Pq/diaClass.png" alt="diaClass" border="0"></a>
+.
+.
+!<a href="https://imgbb.com/"><img src="https://i.ibb.co/SQtc99x/Gestione.png" alt="Gestione" border="0"></a>
+.
+!<a href="https://imgbb.com/"><img src="https://i.ibb.co/wdqk7vP/model.png" alt="model" border="0"></a>
+.
+!<a href="https://imgbb.com/"><img src="https://i.ibb.co/2cBpgVh/eccezioni.png" alt="eccezioni" border="0"></a>
+.
+!<a href="https://imgbb.com/"><img src="https://i.ibb.co/LYLsY83/database.png" alt="database" border="0"></a>
+.
+!<a href="https://imgbb.com/"><img src="https://i.ibb.co/QrWKPC8/controller.png" alt="controller" border="0"></a>
+.
+!<a href="https://imgbb.com/"><img src="https://i.ibb.co/2FbTC8g/app.png" alt="app" border="0"></a>
